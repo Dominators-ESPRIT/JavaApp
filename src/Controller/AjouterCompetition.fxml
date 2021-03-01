@@ -49,5 +49,10 @@
             <Image url="@../../../../../Desktop/img8.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="200.0" fitWidth="204.0" layoutX="117.0" layoutY="-62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/logo.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>
