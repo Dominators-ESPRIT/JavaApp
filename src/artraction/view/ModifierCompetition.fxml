@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="700.0" style="-fx-background-color: #0F0407;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="Controller.ModifierCompetitionController">
+<AnchorPane id="AnchorPane" prefHeight="426.0" prefWidth="700.0" style="-fx-background-color: #0F0407;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ModifierCompetitionController">
    <children>
       <AnchorPane layoutX="415.0" layoutY="38.0" prefHeight="375.0" prefWidth="255.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -33,7 +32,7 @@
                   <MenuItem mnemonicParsing="false" text="Fashion design" />
                </items>
             </SplitMenuButton>
-            <Button layoutX="60.0" layoutY="335.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Enregistrer" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="335.0" />
+            <Button layoutX="60.0" layoutY="362.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Enregistrer" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="362.0" />
             <Label alignment="CENTER" layoutX="48.0" layoutY="35.0" text="Modifier Compétition" textAlignment="CENTER" textFill="#160101">
                <font>
                   <Font name="Arial Bold" size="18.0" />

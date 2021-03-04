@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package artraction.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,10 +19,10 @@ public class Pi extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ConsulterListCompetition.fxml"));
         
         Scene scene = new Scene(root);
-        
+        stage.setTitle("Consulter compétitions");
         stage.setScene(scene);
         stage.show();
     }

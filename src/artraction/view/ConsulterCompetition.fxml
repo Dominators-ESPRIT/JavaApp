@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="tfrechercher" prefHeight="500.0" prefWidth="950.0" style="-fx-background-color: #0F0407;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.ConsulterCompetitionController">
+   <children>
+      <Label layoutX="379.0" layoutY="14.0" text="Gérer Compétition" textFill="#f8f3f3" AnchorPane.topAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <VBox layoutX="14.0" layoutY="90.0" prefHeight="209.0" prefWidth="106.0" spacing="23.0">
+         <children>
+            <Label lineSpacing="18.0" text="Ref compétition" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label lineSpacing="18.0" text="Nom" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label lineSpacing="18.0" text="Théme" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label lineSpacing="18.0" text="Date debut" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label lineSpacing="18.0" text="Date fin" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <Label lineSpacing="18.0" text="Type" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+         </children>
+      </VBox>
+      <VBox layoutX="120.0" layoutY="90.0" prefHeight="221.0" prefWidth="175.0" spacing="10.0">
+         <children>
+            <TextField fx:id="tfrefcompetition" promptText="Ref_compétition" />
+            <TextField fx:id="tfnom" layoutX="10.0" layoutY="10.0" promptText="Nom" />
+            <TextField fx:id="tftheme" layoutX="10.0" layoutY="10.0" prefHeight="26.0" prefWidth="150.0" promptText="Théme" />
+            <DatePicker fx:id="dpdatedebut" promptText="Date_debut" />
+            <DatePicker fx:id="dpdatefin" layoutX="10.0" layoutY="87.0" promptText="Date_fin" />
+            <TextField fx:id="tftype" promptText="Type" />
+         </children>
+      </VBox>
+      <TableView fx:id="tvcompetition" layoutX="357.0" layoutY="86.0" onMouseClicked="#HandleMouseAction" prefHeight="400.0" prefWidth="581.0">
+        <columns>
+          <TableColumn fx:id="colrefcompetition" prefWidth="99.20001220703125" text="Ref compétition" />
+          <TableColumn fx:id="colnom" prefWidth="88.79998779296875" text="Nom" />
+            <TableColumn fx:id="coltheme" prefWidth="80.79998779296875" text="Théme" />
+            <TableColumn fx:id="coldatedebut" prefWidth="110.39996337890625" text="Date debut" />
+            <TableColumn fx:id="coldatefin" prefWidth="97.60003662109375" text="Date fin" />
+            <TableColumn fx:id="coltype" prefWidth="127.2000732421875" text="Type" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnajouter" layoutX="14.0" layoutY="345.0" mnemonicParsing="false" onAction="#HandleButtonAction" prefHeight="26.0" prefWidth="86.0" text="Ajouter" />
+      <Button fx:id="btnmodifier" layoutX="129.0" layoutY="345.0" mnemonicParsing="false" onAction="#HandleButtonAction" prefHeight="26.0" prefWidth="86.0" text="Modifier" />
+      <Button fx:id="btnsupprimer" layoutX="246.0" layoutY="345.0" mnemonicParsing="false" onAction="#HandleButtonAction" prefHeight="26.0" prefWidth="86.0" text="Supprimer" />
+   </children>
+</AnchorPane>
