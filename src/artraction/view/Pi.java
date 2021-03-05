@@ -19,7 +19,7 @@ public class Pi extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ConsulterListCompetition.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("ConsulterCompetition.fxml"));
         
         Scene scene = new Scene(root);
         stage.setTitle("Consulter compétitions");

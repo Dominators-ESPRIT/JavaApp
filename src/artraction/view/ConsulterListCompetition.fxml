@@ -14,6 +14,7 @@
             <Font name="Arial Narrow Bold" size="23.0" />
          </font>
       </Label>
+      <Button fx:id="btnparticiper" layoutX="150.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#onclickparticiper" prefHeight="26.0" prefWidth="106.0" text="Participer" AnchorPane.leftAnchor="150.0" />
       <TableView fx:id="tvcompetition" layoutX="74.0" layoutY="66.0" prefHeight="285.0" prefWidth="692.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
         <columns>
           <TableColumn fx:id="colrefcompetition" prefWidth="110.40004920959473" text="Ref_compétition" />
@@ -24,7 +25,6 @@
             <TableColumn fx:id="coltype" prefWidth="116.79998779296875" text="Type" />
         </columns>
       </TableView>
-      <Button fx:id="btnparticiper" layoutX="150.0" layoutY="363.0" mnemonicParsing="false" onMouseClicked="#onclickparticiper" prefHeight="26.0" prefWidth="106.0" text="Participer" AnchorPane.leftAnchor="150.0" />
       <Button fx:id="btnretour" layoutX="476.0" layoutY="363.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Retour" AnchorPane.rightAnchor="149.60000000000002" />
    </children>
 </AnchorPane>

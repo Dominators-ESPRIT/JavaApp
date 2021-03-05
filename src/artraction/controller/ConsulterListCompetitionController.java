@@ -6,6 +6,7 @@
 package artraction.controller;
 
 import artraction.entity.Competition;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -18,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -132,6 +134,12 @@ public class ConsulterListCompetitionController implements Initializable {
 
     @FXML
     private void onclickparticiper(MouseEvent event) throws Exception{
+//          @FXML
+//    void Clickparticiper(ActionEvent event) throws IOException {
+//        AnchorPane pane = FXMLLoader.load(getClass().getResource("ParticiperCompetition.fxml"));
+//        listcompetitionpane.getChildren().setAll(pane);
+        
+        
         Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/ParticiperCompetition.fxml"));
         
         Stage mainStage=new Stage();
@@ -139,5 +147,18 @@ public class ConsulterListCompetitionController implements Initializable {
         mainStage.setScene(scene);
         mainStage.show();
     }
+    
+//     @FXML
+//    private void onclickannuler(MouseEvent event) throws IOException {
+//          AnchorPane pane = FXMLLoader.load(getClass().getResource("/artraction/view/ParticiperListCompetition.fxml"));
+//        listcompetitionpane.getChildren().setAll(pane);
+//    }
+
+   
     }
+
+  
+    
+    
+
 
