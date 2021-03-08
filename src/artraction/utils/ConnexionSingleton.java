@@ -17,7 +17,7 @@ public class ConnexionSingleton {
     
  
     private static ConnexionSingleton instance;
-    static final String jdbcDriver = "com.mysql.jdbc.Driver";
+   // static final String jdbcDriver = "com.mysql.jdbc.Driver";
       Connection con=null;
       PreparedStatement pst;
                
@@ -26,20 +26,15 @@ public class ConnexionSingleton {
     }   
     
     
-    private ConnexionSingleton() throws SQLException {
-        try {
+    public ConnexionSingleton() throws SQLException {
+      try {
             Class.forName("com.mysql.jdbc.Driver");
              this.con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-             pst=con.prepareStatement("insert into panier (etat) values('1')");
-            int status=pst.executeUpdate();
-            if (status==1)
-                System.out.println("mala jaaaaaaaaaaaaaaaaaaaaaaaaaaaaaw");
-            else System.out.println("nshalah lyouuuum");
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ConnexionSingleton.class.getName()).log(Level.SEVERE, null, ex);
         }
-                   
+               
 
     }
     

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="843.0" prefWidth="1225.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.CodepromoController">
+   <children>
+      <AnchorPane layoutX="-81.0" layoutY="-46.0">
+         <children>
+            <AnchorPane layoutY="6.0" />
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="904.0" fitWidth="797.0" layoutX="-136.0" layoutY="-87.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/bg2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="308.0" layoutY="36.0" prefHeight="106.0" prefWidth="460.0" text="Gestion des Codes promo" textFill="#d5b6bb">
+         <font>
+            <Font name="Maiandra GD" size="40.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nom_code" alignment="BOTTOM_CENTER" layoutX="218.0" layoutY="233.0" prefHeight="26.0" prefWidth="137.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow>
+                     <input>
+                        <ColorAdjust />
+                     </input>
+                  </Shadow>
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8980392217636108" green="0.7960784435272217" blue="0.7960784435272217" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+      </TextField>
+      <Button fx:id="add_code" blendMode="LIGHTEN" layoutX="371.0" layoutY="257.0" mnemonicParsing="false" text="Ajouter" />
+      <TextField fx:id="val_code" alignment="BOTTOM_CENTER" layoutX="217.0" layoutY="272.0" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow>
+                     <input>
+                        <ColorAdjust />
+                     </input>
+                  </Shadow>
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8980392217636108" green="0.7960784435272217" blue="0.7960784435272217" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+      </TextField>
+      <Label layoutX="148.0" layoutY="232.0" text="Nom:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="148.0" layoutY="272.0" text="Valeur:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="146.0" layoutY="183.0" text="Ajouter un code promo" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="365.0" text="Supprimer un code promo" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="codeliste" layoutX="157.0" layoutY="434.0" prefWidth="150.0" style="-fx-background-color: #e5cbcb;" />
+      <Button fx:id="supp_code" blendMode="LIGHTEN" layoutX="344.0" layoutY="434.0" mnemonicParsing="false" text="Supprimer" />
+      <Label layoutX="140.0" layoutY="520.0" text="Mettre à jour un code promo" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="codeliste1" layoutX="194.0" layoutY="567.0" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #e5cbcb;" />
+      <Button fx:id="maj_code" blendMode="LIGHTEN" layoutX="353.0" layoutY="610.0" mnemonicParsing="false" text="Mettre à jour" />
+      <TextField fx:id="nom_code1" alignment="BOTTOM_CENTER" layoutX="195.0" layoutY="610.0" prefHeight="26.0" prefWidth="137.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow>
+                     <input>
+                        <ColorAdjust />
+                     </input>
+                  </Shadow>
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8980392217636108" green="0.7960784435272217" blue="0.7960784435272217" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+      </TextField>
+      <TextField fx:id="val_code1" alignment="BOTTOM_CENTER" layoutX="194.0" layoutY="649.0" prefHeight="26.0" prefWidth="138.0" style="-fx-background-color: #FFFFFF;">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow>
+                     <input>
+                        <ColorAdjust />
+                     </input>
+                  </Shadow>
+               </bumpInput>
+               <light>
+                  <Light.Distant>
+                     <color>
+                        <Color red="0.8980392217636108" green="0.7960784435272217" blue="0.7960784435272217" />
+                     </color>
+                  </Light.Distant>
+               </light>
+            </Lighting>
+         </effect>
+      </TextField>
+      <Label layoutX="125.0" layoutY="609.0" text="Nom:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="649.0" text="Valeur:" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="table" layoutX="721.0" layoutY="232.0" prefHeight="446.0" prefWidth="292.0" style="-fx-background-color: #e5cbcb;">
+        <columns>
+          <TableColumn fx:id="label" prefWidth="148.0" text="Label" />
+          <TableColumn fx:id="valeur" prefWidth="140.79998779296875" text="Valeur %" />
+        </columns>
+      </TableView>
+      <Label layoutX="735.0" layoutY="183.0" text="Afficher les codes promo" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="99.0" layoutY="338.0" opacity="0.5" prefHeight="0.0" prefWidth="450.0" />
+      <Separator layoutX="107.0" layoutY="493.0" opacity="0.5" prefHeight="0.0" prefWidth="450.0" />
+   </children>
+</AnchorPane>

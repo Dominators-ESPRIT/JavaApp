@@ -12,6 +12,9 @@ package artraction.service;
 
 import artraction.entity.panier;
 import artraction.utils.ConnexionSingleton;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,7 +32,14 @@ public class panierService implements Ipanierservice<panier>{
     private Statement st;
     private ResultSet rs;
     
-    public panierService() {
+    
+    
+        Connection con=null;
+        PreparedStatement ins,upd,supp;
+        
+     
+        
+    public panierService() throws SQLException {
         ConnexionSingleton cs=ConnexionSingleton.getInstance();
         try {
             st=cs.getCnx().createStatement();
@@ -38,7 +48,7 @@ public class panierService implements Ipanierservice<panier>{
         }
     }
     
-    public static panierService getInstance(){
+    public static panierService getInstance() throws SQLException{
         if(instance==null) 
             instance=new panierService();
         return instance;
@@ -46,28 +56,42 @@ public class panierService implements Ipanierservice<panier>{
 
     @Override
     public void insert(panier o) {
-        String req="insert into panier (etat) values ('0')";
         try {
-            st.executeUpdate(req);
+             Class.forName("com.mysql.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
+            System.out.println(con);
+            ins=con.prepareStatement("insert into panier (etat) values('1')");
+            int statusins=ins.executeUpdate();
+            if (statusins==1)
+                System.out.println("insert temshy");
+            else System.out.println("insert matemshysh");
         } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }   
+//____________________________________________________________________________________________________________________
 
     @Override
     public void delete(panier o) {
-        String req="delete from personne where id="+o.getid_panier();
-        panier p=displayById(o.getid_panier());
-        
-          if(p!=null)
-              try {
-           
-            st.executeUpdate(req);
-             
+        try {
+              Class.forName("com.mysql.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
+            System.out.println(con);
+            supp=con.prepareStatement("delete from panier where id_panier=10");
+            int statussupp=supp.executeUpdate();
+            if (statussupp==1)
+                System.out.println("delete temshy");
+            else System.out.println("delete matemshysh");
         } catch (SQLException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
-        }else System.out.println("n'existe pas");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
+//____________________________________________________________________________________________________________________
 
     @Override
     public ObservableList<panier> displayAll() {
@@ -126,20 +150,24 @@ public class panierService implements Ipanierservice<panier>{
         }
     return p;
     }
-
+//____________________________________________________________________________________________________________________
     @Override
-    public boolean update(panier p) {
-        String qry = "UPDATE personne SET etat = '"+p.getetat()+"' WHERE id = "+p.getid_panier();
+    public int update(panier p) {
+        int statusupd = 0;
         
         try {
-            if (st.executeUpdate(qry) > 0) {
-                return true;
-            }
-            
+             Class.forName("com.mysql.jdbc.Driver");
+            con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
+            System.out.println(con);
+            upd=con.prepareStatement("update panier set etat= 0 where id_panier = 5");
+             statusupd=upd.executeUpdate();
+     
         } catch (SQLException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+             return statusupd;
     }
 
     

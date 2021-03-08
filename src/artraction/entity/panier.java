@@ -33,16 +33,24 @@ public class panier {
     }
 
     public void setetat(int etat) {
-        if (etat!=0 && etat!=1)
+        while (etat!=0 && etat!=1)
             System.out.println("etat doit etre 0 ou 1");
-        else {
-            this.etat = etat;
+        this.etat = etat;
         }
-    }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + this.id_panier;
+        hash = 13 * hash + this.etat;
+        return hash;
+    }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -50,12 +58,17 @@ public class panier {
             return false;
         }
         final panier other = (panier) obj;
-        if (!Objects.equals(this.id_panier, other.id_panier)) {
+        if (this.id_panier != other.id_panier) {
+            return false;
+        }
+        if (this.etat != other.etat) {
             return false;
         }
         return true;
     }
     
+
+
     
     
 }

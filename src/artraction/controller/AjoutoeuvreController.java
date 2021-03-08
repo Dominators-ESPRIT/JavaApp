@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package artraction.view;
+package artraction.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author zeyne
  */
-public class PanierController implements Initializable {
+public class AjoutoeuvreController implements Initializable {
 
     /**
      * Initializes the controller class.
