@@ -53,6 +53,12 @@ public class PanierController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
+        
+        
+        
+        
      
         valider_btn.setOnAction(event -> {
 

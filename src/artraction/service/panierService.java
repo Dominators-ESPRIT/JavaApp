@@ -60,7 +60,7 @@ public class panierService implements Ipanierservice<panier>{
              Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-            ins=con.prepareStatement("insert into panier (etat) values('1')");
+            ins=con.prepareStatement("insert into panier (etat) values('"+o.getid_panier()+"')");
             int statusins=ins.executeUpdate();
             if (statusins==1)
                 System.out.println("insert temshy");
