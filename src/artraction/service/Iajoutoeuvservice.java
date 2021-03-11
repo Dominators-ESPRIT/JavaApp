@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package artraction.service;
+import artraction.entity.oeuvre;
 import static javafx.scene.input.KeyCode.T;
 /**
  *
@@ -11,4 +12,7 @@ import static javafx.scene.input.KeyCode.T;
  */
 public interface Iajoutoeuvservice<T> {
      public void insert(T o);
+     public T displaypanier(int id);
+     public int updateidpanier(T o,int x);
+
 }

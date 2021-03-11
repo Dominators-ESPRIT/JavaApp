@@ -20,7 +20,11 @@ public class oeuvre {
         this.prix = prix;
     }
 
-    public oeuvre() {
+    public oeuvre(String ref) {
+        this.ref=ref;
+    }
+    public oeuvre(){
+        
     }
 
     public String getRef() {
@@ -48,7 +52,7 @@ public class oeuvre {
     }
 
     public String getValeur() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     

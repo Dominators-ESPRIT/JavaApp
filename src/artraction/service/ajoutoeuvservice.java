@@ -50,7 +50,7 @@ public class ajoutoeuvservice implements Iajoutoeuvservice<oeuvre>{
     @Override
     public void insert(oeuvre o) {
           try {
-              ins=con.prepareStatement("insert into oeuvre (ref,label,prix) values ( '"+randref+"','prd1', 500)");
+              ins=con.prepareStatement("insert into oeuvre (ref,label,prix) values ( '"+o.getRef()+"','prd1', 500)");
               int statusins=ins.executeUpdate();
               if (statusins==1)
                   System.out.println("insert temshy");
@@ -59,5 +59,41 @@ public class ajoutoeuvservice implements Iajoutoeuvservice<oeuvre>{
               Logger.getLogger(ajoutoeuvservice.class.getName()).log(Level.SEVERE, null, ex);
           }
     }
+
+    @Override
+    public oeuvre displaypanier(int id) {
+         String req="select * from oeuvre where id_panier ="+id;
+           oeuvre p=new oeuvre();
+        try {
+            rs=st.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+                    p.setRef(rs.getString(1));
+               p.setLabel(rs.getString("label"));
+               p.setPrix(rs.getDouble(7));
+            //}  
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return p;
+    }
+    public int updateidpanier(oeuvre o,int x) {
+        int statusupd = 0;
+        
+        try {
+          
+            upd=con.prepareStatement("update oeuvre set id_panier= '"+x+"' where ref = '"+o.getRef()+"'");
+             statusupd=upd.executeUpdate();
+     
+
+        } catch (SQLException ex) {
+            Logger.getLogger(codepromoservice.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+     return statusupd;
+    }
+
+   
+    
     
 }

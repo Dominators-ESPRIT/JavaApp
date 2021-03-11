@@ -60,11 +60,11 @@ public class panierService implements Ipanierservice<panier>{
              Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-            ins=con.prepareStatement("insert into panier (etat) values('"+o.getid_panier()+"')");
+            ins=con.prepareStatement("insert into panier (etat) values('"+o.getetat()+"')");
             int statusins=ins.executeUpdate();
             if (statusins==1)
-                System.out.println("insert temshy");
-            else System.out.println("insert matemshysh");
+                System.out.println("insert panier temshy");
+            else System.out.println("insert panier matemshysh");
         } catch (SQLException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -134,21 +134,20 @@ public class panierService implements Ipanierservice<panier>{
         return list;
     }
     @Override
-    public panier displayById(int id) {
-           String req="select * from personne where id ="+id;
+    public int displayId() {
+      
+        int x=-1;
+           String req="select id_panier from panier";
            panier p=new panier();
         try {
             rs=st.executeQuery(req);
-           // while(rs.next()){
-            rs.next();
-                    p.setetat(rs.getInt(1));
-               // p.setNom(rs.getString("nom"));
-               // p.setPrenom(rs.getString(3));
-            //}  
+           while( rs.next())
+           x=rs.getInt(1);
         } catch (SQLException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return p;
+      
+    return x;
     }
 //____________________________________________________________________________________________________________________
     @Override

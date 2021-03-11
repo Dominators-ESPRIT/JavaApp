@@ -12,7 +12,7 @@ public interface Ipanierservice<T> {
     public void insert(T o);
     public void delete(T o);
     public List<T> displayAll();
-    public T displayById(int id);
+    public int displayId();
     
     public int update(T os);
     

@@ -5,7 +5,9 @@
  */
 package artraction.controller;
 
+import artraction.entity.oeuvre;
 import artraction.entity.panier;
+import artraction.service.ajoutoeuvservice;
 import artraction.service.panierService;
 import java.io.IOException;
 import java.net.URL;
@@ -56,22 +58,27 @@ public class PanierController implements Initializable {
         
         
         
-        
-        
-        
-     
-        valider_btn.setOnAction(event -> {
-
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/commande.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        });
+      try {
+          ajoutoeuvservice cp = new ajoutoeuvservice();
+  //         cp.displaypanier(1);
+          
+          
+          
+          valider_btn.setOnAction(event -> {
+              
+              try {
+                  Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/commande.fxml"));
+                  Scene scene = new Scene(page1);
+                  Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                  stage.setScene(scene);
+                  stage.show();
+              } catch (IOException ex) {
+                  Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+              }
+          });
+      } catch (SQLException ex) {
+          Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+      }
     
     }    
     
