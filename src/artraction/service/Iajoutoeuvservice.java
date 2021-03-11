@@ -5,6 +5,7 @@
  */
 package artraction.service;
 import artraction.entity.oeuvre;
+import javafx.collections.ObservableList;
 import static javafx.scene.input.KeyCode.T;
 /**
  *
@@ -12,7 +13,7 @@ import static javafx.scene.input.KeyCode.T;
  */
 public interface Iajoutoeuvservice<T> {
      public void insert(T o);
-     public T displaypanier(int id);
+     public  ObservableList<T> displaypanier(int id);
      public int updateidpanier(T o,int x);
 
 }

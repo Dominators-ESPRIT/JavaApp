@@ -16,6 +16,8 @@ import java.sql.Statement;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import static javafx.scene.input.KeyCode.T;
 
 /**
@@ -61,21 +63,23 @@ public class ajoutoeuvservice implements Iajoutoeuvservice<oeuvre>{
     }
 
     @Override
-    public oeuvre displaypanier(int id) {
-         String req="select * from oeuvre where id_panier ="+id;
-           oeuvre p=new oeuvre();
+    public ObservableList<oeuvre> displaypanier(int id) {
+        ObservableList<oeuvre> list=FXCollections.observableArrayList(); 
+         String req="select * from oeuvre, panier where panier.id_panier=oeuvre.id_panier and etat=1 and oeuvre.id_panier ="+id;
+          
         try {
             rs=st.executeQuery(req);
-           // while(rs.next()){
-            rs.next();
-                    p.setRef(rs.getString(1));
+           while(rs.next()){
+         oeuvre p=new oeuvre();
+              p.setRef(rs.getString(1));
                p.setLabel(rs.getString("label"));
                p.setPrix(rs.getDouble(7));
-            //}  
+               list.add(p);
+            }  
         } catch (SQLException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return p;
+    return list;
     }
     public int updateidpanier(oeuvre o,int x) {
         int statusupd = 0;

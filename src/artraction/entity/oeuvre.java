@@ -51,9 +51,7 @@ public class oeuvre {
         this.prix = prix;
     }
 
-    public String getValeur() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+  
     
     
 }

@@ -146,8 +146,35 @@ public class panierService implements Ipanierservice<panier>{
         } catch (SQLException ex) {
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return x;
+    }
+    @Override
+         public ArrayList<String> displaycodepromo(){
       
-    return x;
+           String req="select label from codepromo";
+           ArrayList<String> codes = new ArrayList<String>();
+        try {
+            rs=st.executeQuery(req);
+           while( rs.next())
+           codes.add(rs.getString(1));
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    return codes;
+         }
+    @Override
+    public int displaycode(String ch){
+        int x = 0;
+        try {
+            String req="select * from codepromo where label='"+ch+"'";
+            rs=st.executeQuery(req);
+            rs.next();
+            x=rs.getInt("valeur");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }return x;
     }
 //____________________________________________________________________________________________________________________
     @Override
