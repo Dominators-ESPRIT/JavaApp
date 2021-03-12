@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/AdminGererCompetition.fxml</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/ArtisteFormulaireParticiperController.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/entity/Competition.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/ArtisteFormulaireParticiper.fxml</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/utilis/ConnexionSingleton.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/controller/AdminGererCompetitionController.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/service/CompetitionService.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/CardCompetitionController.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/UserListCompetitionController.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/Dominators.java</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/UserListCompetition.fxml</file>
+            <file>file:/C:/Users/boukhris/Documents/NetBeansProjects/Dominators/src/artraction/view/CardCompetition.fxml</file>
+        </group>
+    </open-files>
+</project-private>
