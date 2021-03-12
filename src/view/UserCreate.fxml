@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="tfageap" prefHeight="662.0" prefWidth="1022.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserCreateController">
+   <children>
+      <Text fill="#0a0101" fontSmoothingType="LCD" layoutX="564.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter User" wrappingWidth="207.99998885393143">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="462.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="137.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <Text layoutX="460.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="70.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <Text layoutX="459.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="104.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <Text layoutX="460.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero" wrappingWidth="70.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <Text layoutX="460.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="70.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <Text layoutX="460.0" layoutY="419.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" wrappingWidth="70.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <Button fx:id="btnajouter" layoutX="605.0" layoutY="584.0" mnemonicParsing="false" onAction="#btnEcreate_clic" prefHeight="48.0" prefWidth="138.0" style="-fx-background-color: #ffffff;" text="Ajouter" textFill="#038a3b" />
+      <Button fx:id="bntannuler" layoutX="797.0" layoutY="584.0" mnemonicParsing="false" onAction="#btnE_cancel_clic" prefHeight="48.0" prefWidth="127.0" style="-fx-background-color: #ffffff;" text="Annuler" textFill="#250303" />
+      <Text layoutX="460.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Role" wrappingWidth="70.6708984375">
+         <font>
+            <Font name="Times New Roman" size="20.0" />
+         </font></Text>
+      <ChoiceBox fx:id="tfrole" layoutX="642.0" layoutY="456.0" prefHeight="25.0" prefWidth="208.0" />
+      <TextField fx:id="tfusername" layoutX="642.0" layoutY="165.0" prefHeight="25.0" prefWidth="218.0" promptText="Entre your Username" />
+      <TextField fx:id="tfemail" layoutX="642.0" layoutY="213.0" prefHeight="25.0" prefWidth="218.0" promptText="Entre your Email" />
+      <TextField fx:id="tfpassword" layoutX="642.0" layoutY="258.0" prefHeight="25.0" prefWidth="218.0" promptText="Entre your Password" />
+      <TextField fx:id="tfnumero" layoutX="642.0" layoutY="310.0" prefHeight="25.0" prefWidth="218.0" promptText="Entre your  Numero" />
+      <TextField fx:id="tfage" layoutX="642.0" layoutY="355.0" prefHeight="25.0" prefWidth="218.0" promptText="Entre your  Age" />
+      <TextField fx:id="tfaddresse" layoutX="642.0" layoutY="400.0" prefHeight="25.0" prefWidth="218.0" promptText="Entre your  Age" />
+      <AnchorPane layoutX="-1.0" prefHeight="740.0" prefWidth="273.0" style="-fx-background-color: #010103;">
+         <children>
+            <Button layoutX="78.0" layoutY="264.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" style="-fx-background-color: black;" text="Formation" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="70.0" layoutY="343.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: black;" text="Compétition" textFill="#fcfcfc">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="73.0" layoutY="440.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="159.0" style="-fx-background-color: black;" text="événement" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Button>
+            <Button layoutX="70.0" layoutY="540.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="150.0" style="-fx-background-color: black;" text="enchére" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="btncompte" layoutX="54.0" layoutY="187.0" mnemonicParsing="false" onMouseClicked="#onAdminCompteClicked" prefHeight="40.0" prefWidth="171.0" style="-fx-background-color: black;" text="Compte" textFill="WHITE" AnchorPane.bottomAnchor="473.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="187.0">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/B6_jA9sD_400x400.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="logout" layoutX="70.0" layoutY="616.0" mnemonicParsing="false" onMouseClicked="#oncliquelogout" prefHeight="63.0" prefWidth="150.0" style="-fx-background-color: black;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman" size="25.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="39.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="39.0">
+               <image>
+                  <Image url="@../image/téléchargement%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="39.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="39.0">
+               <image>
+                  <Image url="@../image/21936872-icon-formation.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="35.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0">
+               <image>
+                  <Image url="@../image/freestock_573288655.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="39.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="39.0">
+               <image>
+                  <Image url="@../image/téléchargement%20(2).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="39.0" layoutY="549.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="39.0">
+               <image>
+                  <Image url="@../image/téléchargement%20(3).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="50.0" layoutX="41.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="35.0">
+               <image>
+                  <Image url="@../image/images.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="35.0" fitWidth="30.0" layoutX="590.0" layoutY="593.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/téléchargement%20(6).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="30.0" layoutX="782.0" layoutY="593.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/téléchargement%20(9).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
