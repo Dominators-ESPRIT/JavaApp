@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  *
- * @author hazar
+ * @author dell
  */
 public class User {
     private int id;

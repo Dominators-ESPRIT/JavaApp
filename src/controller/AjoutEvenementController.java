@@ -5,6 +5,7 @@
  */
 package controller;
 
+
 import entities.Evenement;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,10 +45,11 @@ import org.controlsfx.control.Notifications;
 import service.EvenementService;
 import service.EvenementServiceInterface;
 
+
 /**
  * FXML Controller class
  *
- * @author hazar
+ * @author dell
  */
 public class AjoutEvenementController implements Initializable {
 
@@ -232,11 +234,22 @@ public class AjoutEvenementController implements Initializable {
                             //myWindow.setFullScreen(true);
                             myWindow.show();
                         } catch (IOException ex) {
-                            Logger.getLogger(AjoutEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ModifiEvenementController.class.getName()).log(Level.SEVERE, null, ex);
                         } 
         
                 
-    
+             /*   FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ListeEvenement.fxml"));
+                try {
+                    Parent root = loader.load();
+                    ListeEvenementController le=loader.getController();
+                    
+                    
+                    titre.getScene().setRoot(root);
+                    
+                }catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+               */
               
         
     

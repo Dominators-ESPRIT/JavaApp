@@ -39,8 +39,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javax.mail.Session;
 import service.CommentService;
 import service.EvenementService;
+import service.ServiceMail;
 import java.lang.String;
 import javafx.collections.transformation.SortedList;
 
@@ -48,7 +50,7 @@ import javafx.collections.transformation.SortedList;
 /**
  * FXML Controller class
  *
- * @author hazar
+ * @author dell
  */
 public class ListeEvenementController implements Initializable {
 
@@ -69,6 +71,7 @@ public class ListeEvenementController implements Initializable {
     private TableColumn<Evenement, Date> datefin;
     @FXML
     private TableColumn<Evenement, Integer> nbplaces;
+    @FXML
     private TableColumn<Evenement, Integer> nbparticipants;
     @FXML
     private Button modifier;
@@ -82,6 +85,7 @@ public class ListeEvenementController implements Initializable {
      EvenementService evtservice =  new EvenementService();
     @FXML
     private Button ajout;
+    @FXML
     private TextField recherche;
       
 
@@ -167,12 +171,15 @@ public class ListeEvenementController implements Initializable {
         this.nbplaces.setText(nbplaces.getText());
     }
 
+    public void setNbparticipants(TableColumn<Evenement, Integer> nbparticipants) {
+        this.nbparticipants.setText(nbparticipants.getText());
+    }
 
     @FXML
     private void modifieEvent(ActionEvent event) throws SQLDataException {
         
-                  // ModifiEvenementController.idmof =  Table.getSelectionModel().getSelectedItem().getId();
-                   //System.out.println("cxxxxxxxxxxxxxxxxxxxxxxxxx"+ModifiEvenementController.idmof);
+                   ModifiEvenementController.idmof =  Table.getSelectionModel().getSelectedItem().getId();
+                   System.out.println("cxxxxxxxxxxxxxxxxxxxxxxxxx"+ModifiEvenementController.idmof);
 
   Parent root;
                         try {
@@ -184,7 +191,7 @@ public class ListeEvenementController implements Initializable {
                             //myWindow.setFullScreen(true);
                             myWindow.show();
                         } catch (IOException ex) {
-                            Logger.getLogger(ListeEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ModifiEvenementController.class.getName()).log(Level.SEVERE, null, ex);
                         } 
         
     }
@@ -243,12 +250,76 @@ public class ListeEvenementController implements Initializable {
                             //myWindow.setFullScreen(true);
                             myWindow.show();
                         } catch (IOException ex) {
-                            Logger.getLogger(ListeEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(ModifiEvenementController.class.getName()).log(Level.SEVERE, null, ex);
                         }
         
     }
 
- 
+    @FXML
+    private void Rechercher(ActionEvent event)
+    {
+        try {
+            /* try {
+            List<Evenement> listEvenements = new ArrayList<>();
+            listEvenements = evtservice.afficheEvenement(recherche.getText());
+            ObservableList<Evenement> data = FXCollections.observableArrayList(listEvenements);
+            Table.setItems(data);
+            } catch (SQLDataException ex) {
+            Logger.getLogger(ListeEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
+            
+            ide.setCellValueFactory(new PropertyValueFactory<>("id"));
+            titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
+            lieu.setCellValueFactory(new PropertyValueFactory<>("lieu"));
+            nbplaces.setCellValueFactory(new PropertyValueFactory<>("nbreplaces"));
+            nbparticipants.setCellValueFactory(new PropertyValueFactory<>("nbreparticipants"));
+            datedebut.setCellValueFactory(new PropertyValueFactory<>("DateDebut"));
+            datefin.setCellValueFactory(new PropertyValueFactory<>("DateFin"));
+            
+            
+            
+            List<Evenement> list = evtservice.getAllEvenement();
+            
+            //tableview.setItems(observablelist);
+            
+            FilteredList<Evenement> filtredData= new FilteredList<>(EventData, b ->true);
+            recherche.textProperty().addListener((observable,oldValue,newValue) -> {
+                Predicate<? super Evenement> Evenement;
+                filtredData.setPredicate((Evenement evenement) -> {
+                    if (newValue == null || newValue.isEmpty()){
+                        return true;
+                    }
+                    
+                    String lowerCaseFilter = newValue.toLowerCase();
+                    if(evenement.getTitre().toLowerCase().indexOf(lowerCaseFilter) != -1 ){
+                        return true;
+                    }
+                    else if (evenement.getLieu().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                        return true; // Filter matches last name.
+                    }
+                    
+                    else
+                        return false;
+                } );
+            });
+             // 3. Wrap the FilteredList in a SortedList. 
+        SortedList<Evenement> sortedData = new SortedList<>(filtredData);
+
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        // 	  Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(Table.comparatorProperty());
+
+        // 5. Add sorted (and filtered) data to the table.
+        Table.setItems(sortedData);
+        } catch (SQLDataException ex) {
+            Logger.getLogger(ListeEvenementController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+  
+
+    
+    
+    }
  
 
 }

@@ -7,7 +7,7 @@ package entities;
 
 /**
  *
- * @author hazar
+ * @author dell
  */
 public class Participer {
     

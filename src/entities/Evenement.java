@@ -6,7 +6,7 @@ import java.util.Objects;
 
 /**
  *
- * @author hazar
+ * @author dell
  */
 public class Evenement {
     private int id ,nbreplaces,nbreparticipants ;

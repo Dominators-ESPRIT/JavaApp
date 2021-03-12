@@ -9,7 +9,7 @@ import java.util.Objects;
 
 /**
  *
- * @author hazar
+ * @author dell
  */
 public class CommentEvenement {
       private Evenement idEvt;

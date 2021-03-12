@@ -24,7 +24,7 @@ import utils.DataSource;
 
 /**
  *
- * @author hazar
+ * @author dell
  */
 public class CommentService implements CommentServiceInterface{
     
@@ -114,29 +114,29 @@ public class CommentService implements CommentServiceInterface{
     public Evenement findEvenementById(int id) {
         
        try {
-             Evenement evt=new Evenement();
+             Evenement e=new Evenement();
              int c=0;
              String req="select * from evenements where id="+id;
              Statement st=cn.createStatement();
              ResultSet rs=st.executeQuery(req);
              while(rs.next())
              {
-                 evt.setId(rs.getInt(1));
-                 evt.setLieu(rs.getString(2));
-                 evt.setTitre(rs.getString(3));
-                 evt.setNbreplaces(rs.getInt(4));
-                 evt.setNbreparticipants(rs.getInt(5));
-                 evt.setDateDebut(rs.getDate(6));
-                 evt.setDateFin(rs.getDate(7));
-                 evt.setImage(rs.getString(8));
-
+         
+                 e.setNbreparticipants(rs.getInt(8));
+                  e.setId(rs.getInt(1));
+                e.setLieu(rs.getString(5));
+                e.setTitre(rs.getString(2));
+                e.setNbreplaces(rs.getInt(6));
+                e.setDateDebut(rs.getDate(3));
+                e.setDateFin(rs.getDate(4));
+                e.setImage(rs.getString(7));
                  c++;
                          }
              if(c==0)
              {
                  return null;
              }else {
-                 return evt;
+                 return e;
              }
          } catch (SQLException ex) {
              Logger.getLogger(CommentService.class.getName()).log(Level.SEVERE, null, ex);
