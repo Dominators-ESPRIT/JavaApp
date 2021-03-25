@@ -24,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextField;
 
 
 public class panierService implements Ipanierservice<panier>{
@@ -53,8 +54,11 @@ public class panierService implements Ipanierservice<panier>{
             instance=new panierService();
         return instance;
     }
-
     @Override
+        public String returncodepromo(TextField ch){
+         return ch.getText();
+         
+     }    @Override
     public void insert(panier o) {
         try {
              Class.forName("com.mysql.jdbc.Driver");
@@ -79,7 +83,7 @@ public class panierService implements Ipanierservice<panier>{
               Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-            supp=con.prepareStatement("delete from panier where id_panier=10");
+            supp=con.prepareStatement("delete from panier where id_panier='"+o.getid_panier()+"'");
             int statussupp=supp.executeUpdate();
             if (statussupp==1)
                 System.out.println("delete temshy");
@@ -93,7 +97,7 @@ public class panierService implements Ipanierservice<panier>{
     }
 //____________________________________________________________________________________________________________________
 
-    @Override
+   /* @Override
     public ObservableList<panier> displayAll() {
         String req="select * from personne";
         ObservableList<panier> list=FXCollections.observableArrayList();       
@@ -113,26 +117,8 @@ public class panierService implements Ipanierservice<panier>{
         }
         return list;
     }
-
-    public List<panier> displayAllList() {
-        String req="select * from personne";
-        List<panier> list=new ArrayList<>();
-        
-        try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                panier p=new panier();
-                p.setetat(rs.getInt(1));
-               // p.setNom(rs.getString("nom"));
-               // p.setPrenom(rs.getString(3));
-                list.add(p);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
+*/
+ 
     @Override
     public int displayId() {
       
@@ -178,14 +164,14 @@ public class panierService implements Ipanierservice<panier>{
     }
 //____________________________________________________________________________________________________________________
     @Override
-    public int update(panier p) {
+    public int update(int x) {
         int statusupd = 0;
         
         try {
              Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-            upd=con.prepareStatement("update panier set etat= 0 where id_panier = 5");
+            upd=con.prepareStatement("update panier set etat = 0 where id_panier ="+x);
              statusupd=upd.executeUpdate();
      
         } catch (SQLException ex) {

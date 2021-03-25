@@ -9,6 +9,7 @@ import artraction.entity.codepromo;
 import artraction.entity.oeuvre;
 import artraction.entity.panier;
 import artraction.service.ajoutoeuvservice;
+import artraction.service.codepromoservice;
 import artraction.service.panierService;
 import java.io.IOException;
 import java.net.URL;
@@ -50,7 +51,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PanierController implements Initializable {
-       
+
+
     @FXML
     private RadioButton exp;
 
@@ -63,9 +65,8 @@ public class PanierController implements Initializable {
 
     private Button appliquer_bt;
 
-    @FXML
-    private TextField codep;
-    
+      @FXML
+    private TextField codefield;
 
     @FXML
     private Button valider_btn;
@@ -86,15 +87,13 @@ public class PanierController implements Initializable {
     Double soustotal=0.0;
     Double total= 0.0;
     Double s=0.0;
-               ArrayList<String> codes = new ArrayList<String>();
+     ArrayList<String> codes = new ArrayList<String>(); 
 
-    /**
-     * Initializes the controller class.
-     */
+   
+   
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
  
       try {
         ajoutoeuvservice cp = new ajoutoeuvservice();
@@ -115,23 +114,36 @@ public class PanierController implements Initializable {
           appliquer_bt.setOnAction(event->{
               exp.setSelected(false);
               stand.setSelected(false);
+              liv.setText("");
               total=soustotal;
+              
         tot.setText(total.toString());
                int z;
             try {
-                String chp=codep.getText();
+                String chp=codefield.getText();
                 boolean existe=false;
                 panierService pan=panierService.getInstance();
+                String coode=pan.returncodepromo(codefield);
+                System.out.println("cooooooooooode"+coode);
+                codepromoservice code=codepromoservice.getInstance();
+                codepromo codep=new codepromo();
                 codes=pan.displaycodepromo();
+
                 for (int i=0; i<codes.size(); i++) 
                       if (chp.equals(codes.get(i)))
+                      {
                           existe=true;
-
+                          
+                      }
                     if (existe){
                         err.setText(""); 
                         z = pan.displaycode(chp);
                         total=total-((total*z)/100);
                         tot.setText(total.toString());
+                        int codeid=code.displayId(chp);
+                        codep.setValeur(codeid);
+                       this.codefield = codefield;
+
                     }else{
                           err.setText("Code promo non valide");
                          }
@@ -185,6 +197,11 @@ public class PanierController implements Initializable {
           Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
       }
     
+    }
+    
+    
+ public TextField getCodefield() {
+        return codefield;
     }    
     
 }

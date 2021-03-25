@@ -21,7 +21,9 @@ public class ConnexionBDJavafx extends Application {
   public void start(Stage primaryStage) throws IOException {
        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/artraction/view/ajoutoeuvre.fxml"));
-         //Application.setUserAgentStylesheet(getClass().getResource("/artraction/view/fxml.css").toExternalForm());
+      //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/artraction/view/codepromo.fxml"));
+
+        //Application.setUserAgentStylesheet(getClass().getResource("/artraction/view/fxml.css").toExternalForm());
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

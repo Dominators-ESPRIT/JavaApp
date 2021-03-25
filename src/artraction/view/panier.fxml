@@ -59,7 +59,7 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <TextField fx:id="codep" alignment="BOTTOM_CENTER" layoutX="184.0" layoutY="526.0" style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="codefield" alignment="BOTTOM_CENTER" layoutX="184.0" layoutY="526.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Lighting>
                <bumpInput>

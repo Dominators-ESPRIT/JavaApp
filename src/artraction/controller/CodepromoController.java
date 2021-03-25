@@ -54,15 +54,11 @@ public class CodepromoController implements Initializable {
     @FXML
     private TextField val_code;
     
-        @FXML
-    private ChoiceBox<String> codeliste;
 
     @FXML
     private Button supp_code;
     
-       @FXML
-    private ChoiceBox<String> codeliste1;
-
+ 
        @FXML
     private Button maj_code;
 
@@ -84,22 +80,41 @@ public class CodepromoController implements Initializable {
    private ObservableList<codepromo> codepromos=FXCollections.observableArrayList();
    private ObservableList<codepromo> listcode = FXCollections.observableArrayList();
   
-   
+   public boolean isnumber(String ch) {
+       boolean ok= false;
+    try {
+           
+        int x = Integer.parseInt(ch);
+          ok= true;
+
+    } catch (NumberFormatException notamuber) {
+        ok= false;
+    }
+    return ok;
+    }
+    public boolean existe(String ch){
+        boolean ok=false;
+            try {
+                codepromoservice pdao = codepromoservice.getInstance();
+                codepromos= (ObservableList<codepromo>) pdao.displayLabel();
+                         for(int i=0; i<codepromos.size(); i++)
+                         {
+                            if((codepromos.get(i).getLabel()).equals(ch))
+                            {ok= true;
+                            break;}
+                            
+                            } 
+                          } catch (SQLException ex) {
+                Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+            return ok;
+    }
+
     @Override
    
     public void initialize(URL url, ResourceBundle rb) {
-        String ch="";
-            try {
-                 codepromoservice pdao = codepromoservice.getInstance();
-                 codepromos= pdao.displayAll();
-                 } catch (SQLException ex) {
-                Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
-                 }
-            for(int i=0; i<codepromos.size(); i++)
-                {  ch=codepromos.get(i).getLabel()+": "+codepromos.get(i).getValeur()+"%";
-                    codeliste.getItems().add(ch);
-                    codeliste1.getItems().add(ch); 
-                }
+
             
 //---------------------------------------SELECT----------------------------------------------------------------------------          
 
@@ -107,6 +122,7 @@ public class CodepromoController implements Initializable {
             try {
                 pdao = codepromoservice.getInstance();
                 codepromos= pdao.displayAll();
+               // System.out.println("loula: "+codepromos.get(0).getId());
                 } catch (SQLException ex) {
                 Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -115,158 +131,210 @@ public class CodepromoController implements Initializable {
                 label.setCellValueFactory(new PropertyValueFactory<>("label"));
                 valeur.setCellValueFactory(new PropertyValueFactory<>("valeur"));
                 table.setItems(listcode);
+   
+        table.setOnMouseClicked(event->{
             
+           codepromo item=table.getSelectionModel().getSelectedItem();
+            String label=table.getSelectionModel().getSelectedItem().getLabel();
+            int valeur=table.getSelectionModel().getSelectedItem().getValeur();
+            int getid =table.getSelectionModel().getSelectedItem().getId();
+       
+       });
 //---------------------------------------------UPDATE----------------------------------------------------------------------          
-    maj_code.setOnAction(event->{
+
+maj_code.setOnAction(event->{
     
            
-            try {
-                codepromoservice cp = codepromoservice.getInstance();
-                
-                codepromo id = null;
-                String ch1=codeliste1.getValue();
-                System.out.println(ch1);
-                if(ch1==null){
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Alert");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Vous devez séléctionner un code à modifier");
-                    alert.showAndWait();
-                }else{
-                    String[] ch2=ch1.split(":");
-                ch1=ch2[0];
-                
-                if(!(nom_code1.getText().equals("")))
-                {
-                    for(int i=0; i<codepromos.size(); i++)
-                    if(ch1.equals(codepromos.get(i).getLabel()))
-                        id=codepromos.get(i);
-                    int x=cp.updatelabel(id,nom_code1.getText());
-                }
-                if(!(val_code1.getText().equals("")))
-                     {
-                    for(int i=0; i<codepromos.size(); i++)
-                    if(ch1.equals(codepromos.get(i).getLabel()))
-                        id=codepromos.get(i);
-                    int x=cp.updatevaleur(id,val_code1.getText());
-                }
+            // System.out.println(isnumber(val_code1.getText()));
+               try {
+                   codepromoservice cp = codepromoservice.getInstance();
+                   codepromo id = null;
+                   
+                   codepromo item=table.getSelectionModel().getSelectedItem();
+                   int numval=0;
+                 
+                           
+                   if(item==null){
+                       Alert alert = new Alert(AlertType.INFORMATION);
+                       alert.setTitle("Erreur");
+                       alert.setHeaderText("Vous devez séléctionner un code à modifier");
+                       alert.showAndWait();
+                 }else if(nom_code1.getText().equals("") && val_code1.getText().equals("")){
+                       Alert alert = new Alert(AlertType.INFORMATION);
+                           alert.setTitle("Erreur");
+                           alert.setHeaderText("Champs vides!");
+                           alert.showAndWait();
+                 }
+                   else if(existe(nom_code1.getText())==true){
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setTitle("Erreur");
+                        alert.setHeaderText("Label déja utilisé");
+                        alert.show();
+                    }
+                 else{
+                     codepromos=cp.displayAll();
+                       String label=item.getLabel();
+                       int val=item.getValeur();  
+                      
+                       if(!(nom_code1.getText().equals("")))
+                       {
+                           for(int i=0; i<codepromos.size(); i++)
+                               if(label.equals(codepromos.get(i).getLabel()))
+                                   id=codepromos.get(i);
+                           int x=cp.updatelabel(id,nom_code1.getText());
+                           
+                       }
+                       if(isnumber(val_code1.getText())==false && !(val_code1.getText().equals("")) ){
+                           Alert alert = new Alert(AlertType.INFORMATION);
+                           alert.setTitle("Erreur");
+                           alert.setHeaderText("La valeur du code doit etre numérique");
+                           alert.showAndWait();
+                       }else if(isnumber(val_code1.getText())==true)
+                       {
+                           numval=Integer.parseInt(val_code1.getText());
+                           if(numval>100 || numval<1)
+                           {
+                               Alert alert = new Alert(AlertType.INFORMATION);
+                               alert.setTitle("Erreur");
+                               alert.setHeaderText("La valeur du code doit etre entre 1 et 100");
+                               alert.showAndWait();
+                           }else if(!(val_code1.getText().equals("")))
+                               {                                                                                                                                                                                                                                                                                                                                                                                                                       codepromos=cp.displayAll();
+                                   for(int i=0; i<codepromos.size(); i++)
+                                       if(label.equals(codepromos.get(i).getLabel()))
+                                           id=codepromos.get(i);
+                                   int x=cp.updatevaleur(id,val_code1.getText());                               
+                            
+                           }
+                       }
+                       Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/codepromo.fxml"));
+                               Scene scene = new Scene(page1);
+                               Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                               stage.setScene(scene);
+                               stage.show();
+                       
+                       
+                 }
+                      
+        }      catch (IOException ex) {
+                   Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (SQLException ex) {
+                   Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+               }          
+});
 
+//------------------------------------------DELETE-------------------------------------------------------------------------
+supp_code.setOnAction(event->{
+    
+    try {
+        codepromo id = null;
+        codepromoservice cpp = codepromoservice.getInstance();
+        codepromo item=table.getSelectionModel().getSelectedItem();
+        
+        if (item==null){
+            System.out.println("item null");
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Vous devez séléctionner un code à supprimer");
+            // alert.setContentText("Vous devez séléctionner un code à supprimer");
+            alert.showAndWait();
+            
+        }else{
+            String label = item.getLabel();
+            try {
+                
+                for(int i=0; i<codepromos.size(); i++)
+                    if(label.equals(codepromos.get(i).getLabel()))
+                        id=codepromos.get(i);
+                cpp.delete(id);
+                
                 Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/codepromo.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-                }
-             
-            } catch (SQLException ex) {
-                Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
+            } catch (IOException ex) {   
                 Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
             }
-                
-               
-
-    
-    });
-//------------------------------------------DELETE-------------------------------------------------------------------------          
-       supp_code.setOnAction(event->{
             
-            try {
-                codepromo id = null;
-                codepromoservice cpp = codepromoservice.getInstance();
-                String ch1=codeliste.getValue();
-                if (ch1==null){
-                    
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Alert");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Vous devez séléctionner un code à supprimer");
-                    alert.showAndWait();
-                    
-                }else{
-                    try {
-                        String[] ch2=ch1.split(":");
-                        ch1=ch2[0];
-                        
-                        
-                        for(int i=0; i<codepromos.size(); i++)
-                            if(ch1.equals(codepromos.get(i).getLabel()))
-                                id=codepromos.get(i);
-                        cpp.delete(id);
-                        Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/codepromo.fxml"));
-                        Scene scene = new Scene(page1);
-                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setScene(scene);
-                        stage.show();
-                    } catch (IOException ex) {
-                        Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-           
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+        }} catch (SQLException ex) {
+            Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    
+    
+    
+});
+
+//---------------------------------------------INSERT----------------------------------------------------------------------
+add_code.setOnAction(event -> {
+    
+    try {
+        System.out.println(existe(nom_code.getText()));
+        if (nom_code.getText().equals(""))
+        {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Vous devez spécifier le label du code!");
+            alert.show();
+            
+        }
+        else if(existe(nom_code.getText())==true){
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Label déja utilisé");
+            alert.show();
+        }
+        else if (val_code.getText().equals("") )
+        {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Vous devez spécifier la valeur du code!");
+            alert.show();
+            
+        }else if( isnumber(val_code.getText())==false){
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Valeur doit etre numerique");
+            alert.show();
+            //System.out.println(isnumber(val_code.getText()));
+        }else{
+            codepromo cp1 = new codepromo(nom_code.getText());
+            int y;
+            y = Integer.parseInt(val_code.getText());
+            
+            if ((y<=0 || y>100))
+            {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Valeur du code promo doit etre entre 1 et 100");
+                alert.showAndWait();
+            } else{
+                cp1.setValeur(y);
+                codepromoservice cp = codepromoservice.getInstance();
+                cp.insert(cp1);
             }
-                
-               
-           
-       });
-            
- //---------------------------------------------INSERT----------------------------------------------------------------------        
-       add_code.setOnAction(event -> {
-                try {
-                if (nom_code.getText().equals(""))
-                {                   
-                Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText(null);
-                    alert.setContentText(" Vous devez spécifier le label du code!");
-                    alert.show();
-                    
-                }
-                else if (val_code.getText().equals(""))
-                {                   
-                Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Information Dialog");
-                    alert.setHeaderText(null);
-                    alert.setContentText(" Vous devez spécifier la valeur du code!");
-                    alert.show();
-                    
-                }
-                codepromo cp1 = new codepromo(nom_code.getText());
-                 int y;
-                    y = Integer.parseInt(val_code.getText());
-                
-                if ((y<=0 || y>=100))
-               { 
-                   Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setTitle("Alert");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Valeur du code promo doit etre entre 0 et 100");
-                    alert.showAndWait();
-               } else{
-                    cp1.setValeur(y);
-                    codepromoservice cp = codepromoservice.getInstance();
-                    cp.insert(cp1);
-                   } 
-                 Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/codepromo.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-      
-                } catch (IOException ex) {   
-                Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (SQLException ex) {
-                Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
-            }   
-                 });
-    
-                    
+            Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/codepromo.fxml"));
+            Scene scene = new Scene(page1);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
+        
+    } catch (IOException ex) {
+        Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException ex) {
+        Logger.getLogger(CodepromoController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+});
 
-    
-    }   
-    
-}
+
+
+
+
+
+                 
+}}
 
        
  

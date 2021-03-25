@@ -19,8 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import static java.util.Collections.list;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,11 +66,7 @@ public class codepromoservice implements Icodepromoservice<codepromo>{
         try {
            
             ins=con.prepareStatement("insert into codepromo (label,valeur) values ('"+ o.getLabel() +"' , '"+o.getValeur() +"' )");
-            int statusins=ins.executeUpdate();
-            if (statusins==1)
-                System.out.println("insert temshy");
-            else System.out.println("insert matemshysh");
-       
+           ins.executeUpdate();       
         } catch (SQLException ex) {
             Logger.getLogger(codepromoservice.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,10 +91,8 @@ public class codepromoservice implements Icodepromoservice<codepromo>{
 
     @Override
     public ObservableList<codepromo> displayAll() {
-                 ObservableList<codepromo> list=FXCollections.observableArrayList(); 
-
+        ObservableList<codepromo> list=FXCollections.observableArrayList(); 
         try {
-          
             disp=con.prepareStatement("select * from codepromo");
             rs=disp.executeQuery();
             while(rs.next()){
@@ -109,50 +102,67 @@ public class codepromoservice implements Icodepromoservice<codepromo>{
                 p.setValeur(rs.getInt("valeur"));
                 list.add(p);
             }
-            
-      
         } catch (SQLException ex) {
             Logger.getLogger(codepromoservice.class.getName()).log(Level.SEVERE, null, ex);
         }
            return list;
-
     }
-
-    public List<codepromo> displayAllList() {
-        String req="select * from codepromo";
-        List<codepromo> list=new ArrayList<>();
-        
+    public List<codepromo> displayLabel() {
+      ObservableList<codepromo> list=FXCollections.observableArrayList(); 
         try {
-            rs=st.executeQuery(req);
+            disp=con.prepareStatement("select * from codepromo");
+            rs=disp.executeQuery();            
             while(rs.next()){
-                codepromo p=new codepromo();
-                p.setLabel(rs.getString(2));
-               p.setValeur(rs.getInt("valeur"));
+                codepromo p= new codepromo();
+                p.setLabel(rs.getString("label"));
                 list.add(p);
             }
-            
-        } catch (SQLException ex) {
+        }catch (SQLException ex) {
             Logger.getLogger(codepromoservice.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
     @Override
     public codepromo displayById(int id) {
-           String req="select * from personne where id ="+id;
-           codepromo p=new codepromo();
+        String req="select * from personne where id ="+id;
+        codepromo p=new codepromo();
         try {
             rs=st.executeQuery(req);
-           // while(rs.next()){
             rs.next();
-                   // p.setetat(rs.getInt(1));
-               // p.setNom(rs.getString("nom"));
-               // p.setPrenom(rs.getString(3));
-            //}  
         } catch (SQLException ex) {
             Logger.getLogger(codepromoservice.class.getName()).log(Level.SEVERE, null, ex);
         }
     return p;
     }
+ //____________________________________________________________________________________________________________________
+    @Override
+    public int displayId(String ch){
+   int x=-1;
+           String req="select id from codepromo where label = '"+ch+"'";
+        try {
+            rs=st.executeQuery(req);
+           rs.next();
+           x=rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return x;
+
+}
+    
+        public int displayId(){
+   int x=-1;
+           String req="select id from codepromo ";
+        try {
+            rs=st.executeQuery(req);
+           rs.next();
+           x=rs.getInt(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return x;
+
+}
 //____________________________________________________________________________________________________________________
     @Override
     public int updatevaleur(codepromo p,String ch) {

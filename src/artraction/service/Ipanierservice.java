@@ -7,15 +7,16 @@ package artraction.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.control.TextField;
 
 
 public interface Ipanierservice<T> {
     public void insert(T o);
     public void delete(T o);
-    public List<T> displayAll();
+    public String returncodepromo(TextField ch);
     public int displayId();
     public ArrayList<String> displaycodepromo() ;
-    public int update(T os);
+    public int update(int x);
     public int displaycode(String ch);
     
 }
