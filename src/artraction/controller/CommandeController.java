@@ -86,7 +86,7 @@ public class CommandeController implements Initializable {
                
                    String pdffile = "C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/"+pdf.commandePDF();
                     System.out.println(pdffile);
-                    JOptionPane.showMessageDialog(null, "facture enregistrée", "", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Facture envoyée. Consulter votre boite mail", "", JOptionPane.INFORMATION_MESSAGE);
                     JavaMailUtil.sendMail("zeyneb.sdiri@gmail.com",pdffile);
                     confirmer_btn.setDisable(true);
                 } catch (FileNotFoundException ex) {
