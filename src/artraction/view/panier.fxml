@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -36,6 +37,21 @@
                   <Font name="Constantia" size="13.0" />
                </font>
             </Text>
+            <Text fill="WHITE" layoutX="222.0" layoutY="744.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Points de fidélité commulés " wrappingWidth="258.53338623046875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <CheckBox layoutX="484.0" layoutY="764.0" mnemonicParsing="false" text="Utiliser les points de fidélité" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <Text fx:id="ptfid" fill="WHITE" layoutX="484.0" layoutY="743.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.93341064453125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Label layoutX="447.0" layoutY="94.0" prefHeight="105.0" prefWidth="295.0" text="Mon Panier" textFill="#d5b6bb">
@@ -59,7 +75,7 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <TextField fx:id="codep" alignment="BOTTOM_CENTER" layoutX="184.0" layoutY="526.0" style="-fx-background-color: #FFFFFF;">
+      <TextField fx:id="codefield" alignment="BOTTOM_CENTER" layoutX="184.0" layoutY="526.0" style="-fx-background-color: #FFFFFF;">
          <effect>
             <Lighting>
                <bumpInput>
@@ -90,7 +106,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Text fill="#ed4bc7" layoutX="849.0" layoutY="758.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" wrappingWidth="80.933349609375">
+      <Text fill="#ed4bc7" layoutX="849.0" layoutY="807.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" wrappingWidth="80.933349609375">
          <font>
             <Font size="30.0" />
          </font>
@@ -119,8 +135,8 @@
          </font>
       </RadioButton>
       <Line endX="299.6666259765625" endY="24.199981689453125" layoutX="685.0" layoutY="473.0" startX="-635.7999877929688" startY="24.199981689453125" stroke="#acacac" />
-      <Line endX="303.1334228515625" endY="24.199951171875" layoutX="689.0" layoutY="678.0" startX="-635.7999877929688" startY="24.199981689453125" stroke="#acacac" />
-      <Button fx:id="valider_btn" blendMode="LIGHTEN" layoutX="460.0" layoutY="764.0" mnemonicParsing="false" style="-fx-background-color: #e5cbcb;" text="Valider la commande">
+      <Line endX="303.1334228515625" endY="24.199951171875" layoutX="689.0" layoutY="751.0" startX="-635.7999877929688" startY="24.199981689453125" stroke="#acacac" />
+      <Button fx:id="valider_btn" blendMode="LIGHTEN" layoutX="460.0" layoutY="824.0" mnemonicParsing="false" style="-fx-background-color: #e5cbcb;" text="Valider la commande">
          <font>
             <Font size="17.0" />
          </font>
@@ -130,12 +146,12 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="liv" fill="WHITE" layoutX="938.0" layoutY="646.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="43.60003662109375">
+      <Text fx:id="liv" fill="WHITE" layoutX="938.0" layoutY="646.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="43.60003662109375">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="tot" fill="#ed4bc7" layoutX="932.0" layoutY="757.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="80.933349609375">
+      <Text fx:id="tot" fill="#ed4bc7" layoutX="932.0" layoutY="808.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="80.933349609375">
          <font>
             <Font size="24.0" />
          </font>

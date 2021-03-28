@@ -5,7 +5,9 @@
  */
 package artraction.service;
 
+import artraction.entity.codepromo;
 import java.util.List;
+import javafx.collections.ObservableList;
 import static javafx.scene.input.KeyCode.T;
 
 /**
@@ -15,9 +17,10 @@ import static javafx.scene.input.KeyCode.T;
 public interface Icodepromoservice<T> {
      public void insert(T o);
     public void delete(T o);
-    public List<T> displayAll();
+     public ObservableList<T> displayAll();
     public T displayById(int id);
-    
+    public int displayId(String ch);
+    public List <T> displayLabel();
     public int updatevaleur(T os,String ch);
     public int updatelabel(T os,String ch);
 

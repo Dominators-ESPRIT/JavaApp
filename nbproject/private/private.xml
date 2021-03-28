@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/test/ConnexionBDJavafx.java</file>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/entity/panier.java</file>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/view/PanierController.java</file>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/utils/ConnexionSingleton.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/controller/PanierController.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/service/ajoutoeuvservice.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/controller/CodepromoController.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/utils/PDF.java</file>
             <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/service/panierService.java</file>
         </group>
     </open-files>

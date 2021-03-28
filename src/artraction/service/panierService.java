@@ -10,6 +10,7 @@ package artraction.service;
  * @author zeyne
  */
 
+import artraction.entity.oeuvre;
 import artraction.entity.panier;
 import artraction.utils.ConnexionSingleton;
 import java.sql.Connection;
@@ -24,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TextField;
 
 
 public class panierService implements Ipanierservice<panier>{
@@ -53,8 +55,7 @@ public class panierService implements Ipanierservice<panier>{
             instance=new panierService();
         return instance;
     }
-
-    @Override
+     @Override
     public void insert(panier o) {
         try {
              Class.forName("com.mysql.jdbc.Driver");
@@ -79,7 +80,7 @@ public class panierService implements Ipanierservice<panier>{
               Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-            supp=con.prepareStatement("delete from panier where id_panier=10");
+            supp=con.prepareStatement("delete from panier where id_panier='"+o.getid_panier()+"'");
             int statussupp=supp.executeUpdate();
             if (statussupp==1)
                 System.out.println("delete temshy");
@@ -93,46 +94,9 @@ public class panierService implements Ipanierservice<panier>{
     }
 //____________________________________________________________________________________________________________________
 
-    @Override
-    public ObservableList<panier> displayAll() {
-        String req="select * from personne";
-        ObservableList<panier> list=FXCollections.observableArrayList();       
-        
-        try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                panier p=new panier();
-               p.setetat(rs.getInt(1));
-               // p.setNom(rs.getString("nom"));
-               // p.setPrenom(rs.getString(3));
-                list.add(p);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
+   
 
-    public List<panier> displayAllList() {
-        String req="select * from personne";
-        List<panier> list=new ArrayList<>();
-        
-        try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                panier p=new panier();
-                p.setetat(rs.getInt(1));
-               // p.setNom(rs.getString("nom"));
-               // p.setPrenom(rs.getString(3));
-                list.add(p);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
+ 
     @Override
     public int displayId() {
       
@@ -178,14 +142,14 @@ public class panierService implements Ipanierservice<panier>{
     }
 //____________________________________________________________________________________________________________________
     @Override
-    public int update(panier p) {
+    public int update(int x) {
         int statusupd = 0;
         
         try {
              Class.forName("com.mysql.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/artraction", "root", "");
             System.out.println(con);
-            upd=con.prepareStatement("update panier set etat= 0 where id_panier = 5");
+            upd=con.prepareStatement("update panier set etat = 0 where id_panier ="+x);
              statusupd=upd.executeUpdate();
      
         } catch (SQLException ex) {
@@ -195,7 +159,34 @@ public class panierService implements Ipanierservice<panier>{
         }
              return statusupd;
     }
+ public void updatecode (int id,int idp){
+       try {
+           upd=con.prepareStatement("update panier set id_codepromo= '"+id+"' where id_panier= '"+idp+"' ");
+          int x= upd.executeUpdate();
+          if (x>0) System.out.println("update commande jawha behy");
+          else System.out.println("update commande ma temshyyyyyyyyys");
+       } catch (SQLException ex) {
+           Logger.getLogger(commandeservice.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
 
+ 
+    @Override
+ public int displayvaleur(int id) {
+      int x=0;
+        try {
+            String req="select valeur from codepromo , panier where panier.id_codepromo=codepromo.id and id_panier='"+id+"' and valeur IS NOT NULL";
+            rs=st.executeQuery(req);
+            
+            while(rs.next()){
+           
+            x=rs.getInt("valeur");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }            return x;
+
+ }
     
     
 }

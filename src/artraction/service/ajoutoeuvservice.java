@@ -49,6 +49,12 @@ public class ajoutoeuvservice implements Iajoutoeuvservice<oeuvre>{
         }
     }
     
+       public static ajoutoeuvservice getInstance() throws SQLException{
+        if(instance==null) 
+            instance=new ajoutoeuvservice();
+        return instance;
+    }
+    
     @Override
     public void insert(oeuvre o) {
           try {
@@ -81,6 +87,26 @@ public class ajoutoeuvservice implements Iajoutoeuvservice<oeuvre>{
         }
     return list;
     }
+        @Override
+    public ObservableList<oeuvre> displaycommande(int id) {
+        ObservableList<oeuvre> list=FXCollections.observableArrayList(); 
+         String req="select * from oeuvre, panier where panier.id_panier=oeuvre.id_panier and oeuvre.id_panier ="+id;
+          
+        try {
+            rs=st.executeQuery(req);
+           while(rs.next()){
+         oeuvre p=new oeuvre();
+              p.setRef(rs.getString(1));
+               p.setLabel(rs.getString("label"));
+               p.setPrix(rs.getDouble(7));
+               list.add(p);
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return list;
+    }
+    
     public int updateidpanier(oeuvre o,int x) {
         int statusupd = 0;
         
