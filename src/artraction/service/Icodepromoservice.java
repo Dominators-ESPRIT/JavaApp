@@ -20,7 +20,6 @@ public interface Icodepromoservice<T> {
      public ObservableList<T> displayAll();
     public T displayById(int id);
     public int displayId(String ch);
-    public int displayId();
     public List <T> displayLabel();
     public int updatevaleur(T os,String ch);
     public int updatelabel(T os,String ch);

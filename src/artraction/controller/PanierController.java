@@ -83,34 +83,49 @@ public class PanierController implements Initializable {
 
     @FXML
     private Text tot;
+    
+    
+   
    private ObservableList<oeuvre> listpanier = FXCollections.observableArrayList();
     Double soustotal=0.0;
     Double total= 0.0;
     Double s=0.0;
      ArrayList<String> codes = new ArrayList<String>(); 
 
+   int codeid=-1;
+   
+   
+   
+   
+   public double sommetotale(ObservableList<oeuvre> listpanier){
+       double s=0.0;
+         for(int i=0;i<listpanier.size();i++)
+       {
+         s+=listpanier.get(i).getPrix();
+       }
+       return s;
+   }
    
    
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- 
+
       try {
         ajoutoeuvservice cp = new ajoutoeuvservice();
         panierService pan1=panierService.getInstance();
-         int x=pan1.displayId();
+        codepromoservice code=codepromoservice.getInstance();
+       int x=pan1.displayId();
+       
+       
        listpanier=cp.displaypanier(x);
        for(int i=0;i<listpanier.size();i++)
        {
             System.out.println("Ref: "+listpanier.get(i).getRef()+" | Label: "+listpanier.get(i).getLabel()+" | Prix: "+listpanier.get(i).getPrix());
        }
-       for(int i=0;i<listpanier.size();i++)
-       {
-         soustotal+=listpanier.get(i).getPrix();
-       }
+     soustotal=sommetotale(listpanier);
         soustot.setText(soustotal.toString());
         
-        boolean exist=false;
           appliquer_bt.setOnAction(event->{
               exp.setSelected(false);
               stand.setSelected(false);
@@ -119,40 +134,25 @@ public class PanierController implements Initializable {
               
         tot.setText(total.toString());
                int z;
-            try {
+           
                 String chp=codefield.getText();
                 boolean existe=false;
-                panierService pan=panierService.getInstance();
-                String coode=pan.returncodepromo(codefield);
-                System.out.println("cooooooooooode"+coode);
-                codepromoservice code=codepromoservice.getInstance();
+                
                 codepromo codep=new codepromo();
-                codes=pan.displaycodepromo();
+                codes=pan1.displaycodepromo();
 
                 for (int i=0; i<codes.size(); i++) 
+                
                       if (chp.equals(codes.get(i)))
                       {
-                          existe=true;
-                          
-                      }
-                    if (existe){
                         err.setText(""); 
-                        z = pan.displaycode(chp);
+                        z = pan1.displaycode(chp);
                         total=total-((total*z)/100);
-                        tot.setText(total.toString());
-                        int codeid=code.displayId(chp);
-                        codep.setValeur(codeid);
-                       this.codefield = codefield;
-
-                    }else{
-                          err.setText("Code promo non valide");
-                         }
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-          
-          
+                        tot.setText(total.toString());  
+                        codeid=code.displayId(chp);
+                        break;
+                    }else err.setText("Code promo non valide");
+                         
           });
         
 
@@ -164,44 +164,54 @@ public class PanierController implements Initializable {
                 { 
                     s=total+15.0;
                     liv.setText("15DT");
-                    
                 }else if(livraison.getSelectedToggle()==stand)
-                {
-                    s=total+7.0;
+                    
+                {   s=total+7.0;
                     liv.setText("7DT");
+                }else{
+                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                     alert.setTitle("Erreur");
+                     alert.setHeaderText("Veuillez séléctonner la méthode de livraison");
+                     alert.showAndWait();
                 }
                 
                tot.setText(s.toString());
              
                 } 
-            } 
-        ); 
+            }); 
         
        total=soustotal;
        tot.setText(total.toString());
- 
-       
+
           valider_btn.setOnAction(event -> {
               
-              try {
-                  Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/commande.fxml"));
-                  Scene scene = new Scene(page1);
-                  Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                  stage.setScene(scene);
-                  stage.show();
-              } catch (IOException ex) {
-                  Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
-              }
+               if (livraison.getSelectedToggle()==null)
+               {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                           alert.setTitle("Erreur");
+                           alert.setHeaderText("Veuillz séléctionner une méthode de livraison!");
+                           alert.showAndWait();
+               }
+               else{
+              if(codefield.getText().equals("")==false && codeid!=-1)
+                pan1.updatecode(codeid,x );
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/artraction/view/commande.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+               }
           });
       } catch (SQLException ex) {
           Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
       }
     
     }
-    
-    
- public TextField getCodefield() {
-        return codefield;
-    }    
+
+
     
 }

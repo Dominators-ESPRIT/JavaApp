@@ -10,6 +10,7 @@ package artraction.service;
  * @author zeyne
  */
 
+import artraction.entity.oeuvre;
 import artraction.entity.panier;
 import artraction.utils.ConnexionSingleton;
 import java.sql.Connection;
@@ -54,11 +55,7 @@ public class panierService implements Ipanierservice<panier>{
             instance=new panierService();
         return instance;
     }
-    @Override
-        public String returncodepromo(TextField ch){
-         return ch.getText();
-         
-     }    @Override
+     @Override
     public void insert(panier o) {
         try {
              Class.forName("com.mysql.jdbc.Driver");
@@ -97,27 +94,8 @@ public class panierService implements Ipanierservice<panier>{
     }
 //____________________________________________________________________________________________________________________
 
-   /* @Override
-    public ObservableList<panier> displayAll() {
-        String req="select * from personne";
-        ObservableList<panier> list=FXCollections.observableArrayList();       
-        
-        try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                panier p=new panier();
-               p.setetat(rs.getInt(1));
-               // p.setNom(rs.getString("nom"));
-               // p.setPrenom(rs.getString(3));
-                list.add(p);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
-*/
+   
+
  
     @Override
     public int displayId() {
@@ -181,7 +159,34 @@ public class panierService implements Ipanierservice<panier>{
         }
              return statusupd;
     }
+ public void updatecode (int id,int idp){
+       try {
+           upd=con.prepareStatement("update panier set id_codepromo= '"+id+"' where id_panier= '"+idp+"' ");
+          int x= upd.executeUpdate();
+          if (x>0) System.out.println("update commande jawha behy");
+          else System.out.println("update commande ma temshyyyyyyyyys");
+       } catch (SQLException ex) {
+           Logger.getLogger(commandeservice.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }
 
+ 
+    @Override
+ public int displayvaleur(int id) {
+      int x=0;
+        try {
+            String req="select valeur from codepromo , panier where panier.id_codepromo=codepromo.id and id_panier='"+id+"' and valeur IS NOT NULL";
+            rs=st.executeQuery(req);
+            
+            while(rs.next()){
+           
+            x=rs.getInt("valeur");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }            return x;
+
+ }
     
     
 }

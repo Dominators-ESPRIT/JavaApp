@@ -18,6 +18,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.Initializable;
 import artraction.controller.PanierController;
+import artraction.utils.JavaMailUtil;
+import artraction.utils.PDF;
+import com.itextpdf.text.DocumentException;
+import java.io.File;
+import java.io.FileNotFoundException;
 
 /**
  * FXML Controller class
@@ -33,6 +38,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 
 
@@ -56,27 +62,42 @@ public class CommandeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        System.out.println("codefield "+panier.getCodefield());
+   
         try {
             // TODO
-            codepromoservice code=codepromoservice.getInstance();
             panierService pan1=panierService.getInstance();
             commandeservice com=commandeservice.getInstance();
-            int y = pan1.displayId();
-            int x=pan1.update(y);
-            int id=code.displayId();
             commande cmd = new commande();
-            cmd.setId_panier(y);
-            int ref=com.displayRef();
-            cmd.setId_user(0);
+
+            int y = pan1.displayId();
             com.insert(cmd);
+            int ref=com.displayRef();
+            
             cmd.setRef(ref);
+            cmd.setId_panier(y);
+            cmd.setId_user(0);
+            
+            pan1.update(y);
 
             confirmer_btn.setOnAction(event -> {
-                System.out.println("id:---"+id);
-                System.out.println("refff"+cmd.getRef());
-       com.updatecode(id,cmd);
+               
+                try {
+                    PDF pdf=new  PDF();
+               
+                   String pdffile = "C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/"+pdf.commandePDF();
+                    System.out.println(pdffile);
+                    JOptionPane.showMessageDialog(null, "facture enregistrée", "", JOptionPane.INFORMATION_MESSAGE);
+                    JavaMailUtil.sendMail("zeyneb.sdiri@gmail.com",pdffile);
                     confirmer_btn.setDisable(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DocumentException ex) {
+                    Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(CommandeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                
             });
             annuler_btn.setOnAction(event -> {

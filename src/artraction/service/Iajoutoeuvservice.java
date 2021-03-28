@@ -15,5 +15,5 @@ public interface Iajoutoeuvservice<T> {
      public void insert(T o);
      public  ObservableList<T> displaypanier(int id);
      public int updateidpanier(T o,int x);
-
+ public ObservableList<oeuvre> displaycommande(int id);
 }

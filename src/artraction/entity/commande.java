@@ -12,7 +12,6 @@ package artraction.entity;
 public class commande {
     public int ref;
     public int id_panier;
-    public int id_code;
     public int id_user;
 
     public commande() {
@@ -34,13 +33,6 @@ public class commande {
         this.id_panier = id_panier;
     }
 
-    public int getId_code() {
-        return id_code;
-    }
-
-    public void setId_code(int id_code) {
-        this.id_code = id_code;
-    }
 
     public int getId_user() {
         return id_user;

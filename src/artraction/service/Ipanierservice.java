@@ -5,18 +5,21 @@
  */
 package artraction.service;
 
+import artraction.entity.oeuvre;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.control.TextField;
+import javafx.collections.ObservableList;
 
 
 public interface Ipanierservice<T> {
     public void insert(T o);
     public void delete(T o);
-    public String returncodepromo(TextField ch);
     public int displayId();
+ //;
     public ArrayList<String> displaycodepromo() ;
     public int update(int x);
     public int displaycode(String ch);
+    public int displayvaleur(int id);
+     public void updatecode (int id,int idp);
     
 }

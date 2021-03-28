@@ -16,6 +16,5 @@ import static javafx.scene.input.KeyCode.T;
 public interface Icommandeservice <T> {
 
          public void insert(T o);
-         public void updatecode(int id, T o);
 
 }

@@ -56,17 +56,7 @@ public class commandeservice implements Icommandeservice<commande> {
 
     }
     
-   @Override
-    public void updatecode (int id,commande o){
-       try {
-           upd=con.prepareStatement("update liste_commande set id_codepromo= '"+id+"' where ref_commande= '"+o.getRef()+"' ");
-          int x= upd.executeUpdate();
-          if (x>0) System.err.println("update commande jawha behy");
-          else System.out.println("update commande ma temshyyyyyyyyys");
-       } catch (SQLException ex) {
-           Logger.getLogger(commandeservice.class.getName()).log(Level.SEVERE, null, ex);
-       }
-    }
+   
     
     public int displayRef(){
            int x=-1;

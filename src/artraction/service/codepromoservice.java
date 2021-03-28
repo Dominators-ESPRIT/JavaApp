@@ -150,7 +150,7 @@ public class codepromoservice implements Icodepromoservice<codepromo>{
 
 }
     
-        public int displayId(){
+        /*public int displayId(){
    int x=-1;
            String req="select id from codepromo ";
         try {
@@ -162,7 +162,7 @@ public class codepromoservice implements Icodepromoservice<codepromo>{
         }
         return x;
 
-}
+}*/
 //____________________________________________________________________________________________________________________
     @Override
     public int updatevaleur(codepromo p,String ch) {
@@ -195,5 +195,7 @@ public class codepromoservice implements Icodepromoservice<codepromo>{
 
      return statusupd;
     }
+
+   
 }
    
