@@ -43,7 +43,7 @@ public class PDF {
         if(codevaleur==0)
             total=somme;
         else total=somme*(100-codevaleur)/100;   
-        String path="Facture"+numcom+".pdf";
+        String path="Factures/Facture"+numcom+".pdf";
         PdfWriter.getInstance(document, new FileOutputStream (new File (path)));
         document.open();
         Paragraph commande= new Paragraph ("Commande n°"+numcom);
