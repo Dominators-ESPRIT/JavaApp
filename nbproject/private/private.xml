@@ -4,10 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/controller/PanierController.java</file>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/service/ajoutoeuvservice.java</file>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/controller/CodepromoController.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/utils/JavaMailUtil.java</file>
             <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/utils/PDF.java</file>
-            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/service/panierService.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/service/Icodepromoservice.java</file>
+            <file>file:/C:/Users/zeyne/Documents/NetBeansProjects/Gestionpanier/src/artraction/controller/CommandeController.java</file>
         </group>
     </open-files>
 </project-private>
