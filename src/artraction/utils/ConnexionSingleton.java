@@ -5,16 +5,17 @@
  */
 package artraction.utils;
 
+import artraction.entity.userEntity;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 public class ConnexionSingleton {
     
+  public userEntity uInfos;
+
  
     private static ConnexionSingleton instance;
    // static final String jdbcDriver = "com.mysql.jdbc.Driver";

@@ -20,6 +20,8 @@ public interface Ipanierservice<T> {
     public int update(int x);
     public int displaycode(String ch);
     public int displayvaleur(int id);
+    public ObservableList<oeuvre> displayoeuv(int id);
      public void updatecode (int id,int idp);
+     public void deleteoeuv(String ref);
     
 }
