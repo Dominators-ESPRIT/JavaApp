@@ -468,6 +468,7 @@ is divided into following sections:
                     <customize/>
                 </testng>
             </sequential>
+        </testng>
         </macrodef>
     </target>
     <target name="-init-macrodef-test-impl">
