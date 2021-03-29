@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="335.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: black; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.CarduserController">
+   <children>
+      <VBox fx:id="lv" prefHeight="519.0" prefWidth="333.0">
+         <children>
+            <ImageView fx:id="tfimage" fitHeight="183.0" fitWidth="333.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="username:">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfusername" prefHeight="49.0" prefWidth="166.0" text="username">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="email:">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfemail" prefHeight="49.0" prefWidth="166.0" text="email">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="password">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfpassword" prefHeight="49.0" prefWidth="166.0" text="password">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="numero">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfnumero" prefHeight="49.0" prefWidth="166.0" text="numero">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="age">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfage" prefHeight="49.0" prefWidth="166.0" text="age">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="addresse">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfaddresse" prefHeight="49.0" prefWidth="166.0" text="addresse">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="49.0" prefWidth="335.0">
+               <children>
+                  <Label prefHeight="55.0" prefWidth="122.0" text="role">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="tfrole" prefHeight="49.0" prefWidth="166.0" text="role">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <AnchorPane prefHeight="149.0" prefWidth="335.0" />
+   </children>
+</VBox>

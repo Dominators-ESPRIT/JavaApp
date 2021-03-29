@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AcceilController">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/evenement.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="737.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/competition-banner-template-ribbon-label-sign-179673060.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="147.0" fitWidth="224.0" layoutX="412.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/formation-fae21847.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="701.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/vente-aux-encheres-illustration-300x245.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/unnamed.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnevenement" layoutX="54.0" layoutY="313.0" mnemonicParsing="false" onMouseClicked="#oncliqueevenement" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #FEFEFE;" text="Evenement" />
+      <Button fx:id="btnformation" layoutX="412.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#oncliqueformation" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #FEFEFE;" text="Formation" />
+      <Button fx:id="btncompetition" layoutX="754.0" layoutY="305.0" mnemonicParsing="false" onMouseClicked="#oncliqueecompetition" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: #FEFEFE;" text="Competition" />
+      <Button fx:id="btnproduit" layoutX="78.0" layoutY="568.0" mnemonicParsing="false" onMouseClicked="#oncliqueproduit" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #FEFEFE;" text="Produit" />
+      <Button fx:id="btnenchere" layoutX="706.0" layoutY="555.0" mnemonicParsing="false" onMouseClicked="#oncliqueenchere" prefHeight="25.0" prefWidth="184.0" style="-fx-background-color: #FEFEFE;" text="Enchere" />
+      <Button layoutX="855.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#oncliquelogin" prefHeight="36.0" prefWidth="118.0" style="-fx-background-color: #FFFFFF;" text="Login" textFill="#1b0606" />
+      <Label layoutX="279.0" layoutY="49.0" text="Bienvenu Artraction" textFill="WHITE">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="333.0" layoutY="649.0" prefHeight="17.0" prefWidth="358.0" text="© Copyright 2021 by Artraction. All Right Reserved." textFill="WHITE" />
+      <ImageView fitHeight="150.0" fitWidth="184.0" layoutX="432.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/155811572_2938358783062104_4210992979712050532_n.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
