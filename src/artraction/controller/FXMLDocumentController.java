@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package artraction.controller;
-import artraction.dao.User;
+import artraction.service.User;
 import artraction.entity.userEntity;
 import java.io.File;
 import java.io.IOException;

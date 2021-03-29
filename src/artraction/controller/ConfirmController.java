@@ -1,5 +1,5 @@
 package artraction.controller;
-import artraction.dao.User;
+import artraction.service.User;
 import artraction.entity.userEntity;
 import java.io.IOException;
 import java.net.URL;
