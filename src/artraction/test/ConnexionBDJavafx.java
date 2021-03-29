@@ -20,7 +20,7 @@ public class ConnexionBDJavafx extends Application {
     @Override
   public void start(Stage primaryStage) throws IOException {
        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/artraction/view/ajoutoeuvre.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("artraction/view/FXMLDocument.fxml"));
       //  FXMLLoader loader = new FXMLLoader(getClass().getResource("/artraction/view/codepromo.fxml"));
 
         //Application.setUserAgentStylesheet(getClass().getResource("/artraction/view/fxml.css").toExternalForm());

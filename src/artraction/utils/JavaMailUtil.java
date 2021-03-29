@@ -65,14 +65,14 @@ public class JavaMailUtil {
             msg.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
             msg.setSubject("Facture artraction");
            
-            Multipart attach=new MimeMultipart();
-            MimeBodyPart text= new MimeBodyPart();
+            Multipartractionattach=new MimeMultipart();
+            MimeBodyPartractiontext= new MimeBodyPart();
             text.setText("Merci d'éffectuer vos achats sur notre plateforme Artraction. \n Vous trouverez ci-joint votra facture.");
             attach.addBodyPart(text);
 
              
           
-           MimeBodyPart pdf= new MimeBodyPart();
+           MimeBodyPartractionpdf= new MimeBodyPart();
            pdf.attachFile(file);
           attach.addBodyPart(pdf);
             msg.setContent(attach);
