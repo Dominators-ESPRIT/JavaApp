@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="artraction.view.FXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.view.FXMLController">
    <children>
-      <Button fx:id="annuler" layoutX="187.0" layoutY="292.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="creer" layoutX="187.0" layoutY="292.0" mnemonicParsing="false" text="Button" />
+      <TextField fx:id="prix" layoutX="187.0" layoutY="71.0" />
+      <TextField fx:id="coupant" layoutX="194.0" layoutY="123.0" />
    </children>
 </AnchorPane>
