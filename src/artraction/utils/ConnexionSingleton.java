@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 
-<<<<<<< HEAD
+package artraction.utils;
 import artraction.entity.userEntity;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-=======
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,27 +19,18 @@ import java.util.logging.Logger;
  */
 public class ConnexionSingleton {
     
-    private String url="jdbc:mysql://127.0.0.1:3306/art";
-    private String login="root";
-    private String pwd="";
-    private Connection cnx;
+  
+    private Connection con;
     private static ConnexionSingleton instance;
     public userEntity uInfos;
     public Connection getCnx() {
-        return cnx;
+        return con;
     }
     
     
-    private ConnexionSingleton() throws Exception {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");  
-            cnx=DriverManager.getConnection(url, login, pwd);
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnexionSingleton.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
     
-   public static ConnexionSingleton getInstance() throws Exception{
+   public static ConnexionSingleton getInstance() throws SQLException{
       
        if(instance==null)
            instance = new ConnexionSingleton();
@@ -48,30 +38,10 @@ public class ConnexionSingleton {
        return instance;
    }
 
-    public Connection ConnectDb() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
   
-=======
->>>>>>> 6c16736c2051590162d9f3813565785cbc25149e
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-public class ConnexionSingleton {
-    
-  public userEntity uInfos;
 
+    
  
-    private static ConnexionSingleton instance;
-   // static final String jdbcDriver = "com.mysql.jdbc.Driver";
-      Connection con=null;
-      PreparedStatement pst;
-               
-    public Connection getCnx() {
-        return con;
-    }   
     
     
     public ConnexionSingleton() throws SQLException {
@@ -86,19 +56,6 @@ public class ConnexionSingleton {
 
     }
     
-   public static ConnexionSingleton getInstance() throws SQLException{
-       
-       if(instance==null)
-           instance= new ConnexionSingleton();
-    
-       return instance;
-   }
-    
-    
 
-<<<<<<< HEAD
-=======
-    
->>>>>>> 6c16736c2051590162d9f3813565785cbc25149e
     
 }
