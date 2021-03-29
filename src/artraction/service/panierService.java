@@ -20,12 +20,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.TextField;
+
 
 
 public class panierService implements Ipanierservice<panier>{
@@ -140,6 +139,26 @@ public class panierService implements Ipanierservice<panier>{
             Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
         }return x;
     }
+    
+    @Override
+    public ObservableList<oeuvre> displayoeuv(int id){
+          ObservableList<oeuvre> list=FXCollections.observableArrayList(); 
+         String req="select * from oeuvre, panier where panier.id_panier=oeuvre.id_panier and oeuvre.id_panier ="+id;
+          
+        try {
+            rs=st.executeQuery(req);
+           while(rs.next()){
+         oeuvre p=new oeuvre();
+              p.setRef(rs.getString(1));
+               p.setLabel(rs.getString("label"));
+               p.setPrix(rs.getDouble(7));
+               list.add(p);
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    return list;
+    }
 //____________________________________________________________________________________________________________________
     @Override
     public int update(int x) {
@@ -172,7 +191,7 @@ public class panierService implements Ipanierservice<panier>{
 
  
     @Override
- public int displayvaleur(int id) {
+     public int displayvaleur(int id) {
       int x=0;
         try {
             String req="select valeur from codepromo , panier where panier.id_codepromo=codepromo.id and id_panier='"+id+"' and valeur IS NOT NULL";
@@ -187,7 +206,18 @@ public class panierService implements Ipanierservice<panier>{
         }            return x;
 
  }
-    
+    @Override
+    public void deleteoeuv(String ref){
+        try {
+            upd=con.prepareStatement("update oeuvre set id_panier=NULL where ref='"+ref+"'");
+            int x=upd.executeUpdate();
+            if (x>0) System.out.println("delete done");
+          else System.out.println("delete not done");
+        } catch (SQLException ex) {
+            Logger.getLogger(panierService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
 }
    

@@ -11,6 +11,7 @@ import artraction.entity.panier;
 import artraction.service.ajoutoeuvservice;
 import artraction.service.codepromoservice;
 import artraction.service.panierService;
+import static java.awt.SystemColor.text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -44,11 +45,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.ScrollPane.ScrollBarPolicy;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javax.swing.JTextArea;
 
 public class PanierController implements Initializable {
 
@@ -70,7 +81,8 @@ public class PanierController implements Initializable {
 
     @FXML
     private Button valider_btn;
-    
+     @FXML
+    private GridPane grid;
     @FXML
     private Text soustot;
 
@@ -84,7 +96,8 @@ public class PanierController implements Initializable {
     @FXML
     private Text tot;
     
-    
+      @FXML
+    private ScrollPane affichage;
    
    private ObservableList<oeuvre> listpanier = FXCollections.observableArrayList();
     Double soustotal=0.0;
@@ -110,19 +123,59 @@ public class PanierController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        //affichage.setContent(new ImageView(roses));
+        affichage.setVbarPolicy(ScrollBarPolicy.ALWAYS);
+        Text ref = null;
+        Text label = null;
+        Text prix=null;
+        
+      
       try {
         ajoutoeuvservice cp = new ajoutoeuvservice();
         panierService pan1=panierService.getInstance();
         codepromoservice code=codepromoservice.getInstance();
        int x=pan1.displayId();
        
-       
        listpanier=cp.displaypanier(x);
-       for(int i=0;i<listpanier.size();i++)
-       {
-            System.out.println("Ref: "+listpanier.get(i).getRef()+" | Label: "+listpanier.get(i).getLabel()+" | Prix: "+listpanier.get(i).getPrix());
+       
+        for( int i=0;i<listpanier.size();i++)
+       {   int j=i;
+           
+           Button del = new Button("-");
+            //del.setStyle("-fx-background-color: #e5cbcb");
+           grid.setConstraints(del,1,i+1);
+            ref=new Text(listpanier.get(i).getRef());
+            label=new Text(listpanier.get(i).getLabel());
+            prix = new Text(listpanier.get(i).getPrix().toString());
+            ref.setFont(Font.font("", FontWeight.BOLD,  13));
+            label.setFont(Font.font("", FontWeight.BOLD,  20));
+            prix.setFont(Font.font("", FontWeight.BOLD,  20));
+            grid.setConstraints(ref,2,i+1);
+            grid.setConstraints(label,3,i+1);
+            grid.setConstraints(prix,4,i+1);
+            grid.getChildren().addAll(del,ref,label,prix);
+            RowConstraints row = new RowConstraints();
+            row.setPrefHeight(30);
+           grid.getRowConstraints().addAll(row);
+            del.setOnAction(event->{
+                pan1.deleteoeuv(listpanier.get(j).getRef());
+                Parent page1;
+           try {
+               page1 = FXMLLoader.load(getClass().getResource("/artraction/view/panier.fxml"));
+           
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+           }
+            });
+            
        }
+        affichage.setContent(grid);
+
+
      soustotal=sommetotale(listpanier);
         soustot.setText(soustotal.toString());
         
