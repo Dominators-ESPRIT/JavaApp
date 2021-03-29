@@ -1,11 +1,11 @@
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package artraction.entity;
-
-import java.io.InputStream;
 
 /**
  *
@@ -14,7 +14,6 @@ import java.io.InputStream;
 public class userEntity {
     int id,numero,age;
     String username,email,password,image,adresse,role;
-    
     
     
 
@@ -141,3 +140,4 @@ public class userEntity {
     
     
 }
+
