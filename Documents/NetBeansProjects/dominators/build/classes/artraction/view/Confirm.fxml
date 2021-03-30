@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="apppp" prefHeight="572.0" prefWidth="712.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.ConfirmController">
+   <children>
+      <Label fx:id="emailLabel" layoutX="69.0" layoutY="120.0" prefHeight="39.0" prefWidth="389.0" text="Check your mail: ()" textAlignment="CENTER">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="95.0" layoutY="228.0" text="Code ">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="code" layoutX="157.0" layoutY="227.0" />
+      <Button fx:id="validate" layoutX="169.0" layoutY="286.0" mnemonicParsing="false" onMouseClicked="#validateClicked" prefHeight="31.0" prefWidth="127.0" style="-fx-background-color: #5ed84f;" text="Validate" textFill="WHITE" />
+   </children>
+</AnchorPane>
