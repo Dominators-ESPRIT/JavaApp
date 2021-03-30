@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="312.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.view.UserCardCompetitionController">
+   <children>
+      <VBox prefHeight="227.0" prefWidth="312.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="286.0">
+               <children>
+                  <Label text="Nom:" />
+                  <Label fx:id="lnom" text="Nom">
+                     <HBox.margin>
+                        <Insets left="120.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="312.0">
+               <children>
+                  <Label text="Théme:" />
+                  <Label fx:id="ltheme" text="Théme">
+                     <HBox.margin>
+                        <Insets left="110.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <Label text="Date debut :" />
+                  <Label fx:id="ldatedebut" prefHeight="20.0" prefWidth="187.0" text="Date debut">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="85.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <Label text="Date fin :" />
+                  <Label fx:id="ldatefin" text="Date fin">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="105.0" />
+                     </padding>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="200.0">
+               <children>
+                  <Label text="Type :" />
+                  <Label fx:id="ltype" text="Type">
+                     <HBox.margin>
+                        <Insets left="120.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </VBox>
+      <AnchorPane prefHeight="96.0" prefWidth="312.0">
+         <children>
+            <Button layoutX="167.0" layoutY="20.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="113.0" style="-fx-background-color: #8D9391; -fx-border-radius: 10; -fx-border-color: black; -fx-background-radius: 10;" text="Afficher résultat">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnconsulter" layoutX="26.0" layoutY="20.0" mnemonicParsing="false" onAction="#consulter" prefHeight="38.0" prefWidth="114.0" style="-fx-background-color: #8D9391; -fx-border-radius: 10; -fx-border-color: black; -fx-background-radius: 10;" text="Consulter" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="20.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
