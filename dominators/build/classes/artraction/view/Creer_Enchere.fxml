@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="550.0" prefWidth="738.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.Creer_EnchereController">
+   <children>
+      <SplitPane fx:id="split" cacheShape="false" centerShape="false" dividerPositions="0.2" layoutY="-6.0" orientation="VERTICAL" prefHeight="565.0" prefWidth="788.0" scaleShape="false" stylesheets="@JMetroDarkTheme.css" AnchorPane.topAnchor="-6.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="109.0" prefWidth="606.0" style="-fx-background-color: #14274e;" stylesheets="@JMetroDarkTheme.css">
+               <children>
+                  <ImageView fx:id="logouser" fitHeight="25.0" fitWidth="38.0" layoutX="760.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Downloads/106008149_3462914167054679_3353699705145705556_o.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="titre" fill="WHITE" layoutX="200.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enchère" textAlignment="CENTER" wrappingWidth="300.0">
+                     <font>
+                        <Font name="Allan Regular" size="46.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="445.0" prefWidth="701.0" style="-fx-background-color: #14274e;">
+               <children>
+                  <Pane fx:id="pane" layoutX="142.0" layoutY="16.0" prefHeight="414.0" prefWidth="485.0" style="-fx-background-color: #394867;">
+                     <children>
+                        <TextField fx:id="prixinit" layoutX="107.0" layoutY="45.0" prefHeight="25.0" prefWidth="248.0" promptText="Prix initial d'Enchere en dinars" stylesheets="@JMetroDarkTheme.css" />
+                        <TextField fx:id="duree" layoutX="107.0" layoutY="201.0" prefHeight="25.0" prefWidth="248.0" promptText="00:00:00" stylesheets="@JMetroDarkTheme.css" />
+                        <TextField fx:id="coupant" layoutX="107.0" layoutY="92.0" prefHeight="25.0" prefWidth="248.0" promptText="valeur de coupat en dinar" stylesheets="@JMetroDarkTheme.css" />
+                        <DatePicker fx:id="Date" layoutX="107.0" layoutY="142.0" prefHeight="29.0" prefWidth="248.0" showWeekNumbers="true" style="-fx-background-color: white;" stylesheets="@JMetroDarkTheme.css" />
+                        <Button fx:id="btncreerEnchere" layoutX="86.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="96.0" style="-fx-font-size: 12; -fx-background-color: #ac0d0d; -fx-border-color: #ac0d0d;" stylesheets="@JMetroDarkTheme.css" text="Créer" textFill="WHITE">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnannuler" layoutX="259.0" layoutY="355.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="96.0" style="-fx-font-size: 12; -fx-border-color: #9ba4b4; -fx-background-color: #9ba4b4;" text="Annuler" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                           <stylesheets>
+                              <URL value="@JMetroDarkTheme.css" />
+                              <URL value="@JMetroDarkTheme.css" />
+                           </stylesheets>
+                        </Button>
+                     </children></Pane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <MenuBar fx:id="menuBar" layoutX="1.0" layoutY="1.0" prefHeight="27.0" prefWidth="786.0" style="-fx-background-color: #394867; -fx-border-color: #394867;">
+         <menus>
+            <Menu fx:id="FileMenu" mnemonicParsing="false" style="-fx-background-color: #394867; -fx-font-color: white;" text="File">
+               <items>
+                  <MenuItem fx:id="listEnchere" mnemonicParsing="false" text="Enchere" />
+                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                  <MenuItem fx:id="exit" mnemonicParsing="false" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" style="-fx-background-color: #394867; -fx-font-color: white;" styleClass="menu-item" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" style="-fx-background-color: #394867;" styleClass="-fx-font-color" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
