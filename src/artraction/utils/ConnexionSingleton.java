@@ -3,28 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package artraction.utils;
 
+package artraction.utils;
 import artraction.entity.userEntity;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+/**
+ *
+ * @author wiemhjiri
+ */
 public class ConnexionSingleton {
     
-  public userEntity uInfos;
-
- 
+  
+    private Connection con;
     private static ConnexionSingleton instance;
-   // static final String jdbcDriver = "com.mysql.jdbc.Driver";
-      Connection con=null;
-      PreparedStatement pst;
-               
+    public userEntity uInfos;
     public Connection getCnx() {
         return con;
-    }   
+    }
+    
+    
+
+    
+   public static ConnexionSingleton getInstance() throws SQLException{
+      
+       if(instance==null)
+           instance = new ConnexionSingleton();
+       System.out.println(instance);
+       return instance;
+   }
+
+  
+
+    
+ 
     
     
     public ConnexionSingleton() throws SQLException {
@@ -39,15 +56,6 @@ public class ConnexionSingleton {
 
     }
     
-   public static ConnexionSingleton getInstance() throws SQLException{
-       
-       if(instance==null)
-           instance= new ConnexionSingleton();
-    
-       return instance;
-   }
-    
-    
-    
+
     
 }

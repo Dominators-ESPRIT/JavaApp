@@ -71,5 +71,13 @@ public class commandeservice implements Icommandeservice<commande> {
         }
         return x;
     }
+         public void updateadr(String ch,int id){
+    try {
+        upd=con.prepareStatement("update liste_commande set adresse_liv ='"+ch+"' where ref_commande="+id);
+        int statusupd = upd.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        }
     
 }

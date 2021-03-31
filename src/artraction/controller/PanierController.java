@@ -6,10 +6,14 @@
 package artraction.controller;
 
 import artraction.entity.codepromo;
+import artraction.entity.commande;
 import artraction.entity.oeuvre;
 import artraction.entity.panier;
+import artraction.entity.userEntity;
+import artraction.service.User;
 import artraction.service.ajoutoeuvservice;
 import artraction.service.codepromoservice;
+import artraction.service.commandeservice;
 import artraction.service.panierService;
 import static java.awt.SystemColor.text;
 import java.io.IOException;
@@ -136,6 +140,17 @@ public class PanierController implements Initializable {
         codepromoservice code=codepromoservice.getInstance();
        int x=pan1.displayId();
        
+        commande cmd = new commande();
+        userEntity u= new userEntity();
+        User user=User.getInstance();
+        commandeservice com=commandeservice.getInstance();
+        u=user.displayUser();
+        int iduser=u.getId();
+        int reff=com.displayRef();
+        cmd.setRef(reff);
+        cmd.setId_panier(x);
+        cmd.setId_user(iduser);
+        com.insert(cmd);
        listpanier=cp.displaypanier(x);
        
         for( int i=0;i<listpanier.size();i++)
@@ -221,13 +236,7 @@ public class PanierController implements Initializable {
                     
                 {   s=total+7.0;
                     liv.setText("7DT");
-                }else{
-                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                     alert.setTitle("Erreur");
-                     alert.setHeaderText("Veuillez séléctonner la méthode de livraison");
-                     alert.showAndWait();
                 }
-                
                tot.setText(s.toString());
              
                 } 
@@ -261,7 +270,9 @@ public class PanierController implements Initializable {
           });
       } catch (SQLException ex) {
           Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
-      }
+      } catch (Exception ex) {
+            Logger.getLogger(PanierController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
     }
 

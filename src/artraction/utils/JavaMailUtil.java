@@ -36,7 +36,7 @@ public class JavaMailUtil {
      * @param file
      * @throws Exception
      */
-    public static void sendMail(String recipient,String file) throws Exception{
+    public static void sendMail(String recipient,String file,String username) throws Exception{
      Properties prop=new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", true);
@@ -50,7 +50,7 @@ public class JavaMailUtil {
                 return new PasswordAuthentication(myaccount, passw );
             }
         });
-        Message msg=prepareMessage(sess,myaccount,recipient,file );
+        Message msg=prepareMessage(sess,myaccount,recipient,file,username );
         
         Transport.send(msg);
         System.out.println("Message envoyé avec succés");
@@ -58,7 +58,7 @@ public class JavaMailUtil {
   //  });*/
     }
 
-    private static Message prepareMessage(Session sess, String myaccount, String recipient, String file) {
+    private static Message prepareMessage(Session sess, String myaccount, String recipient, String file, String username) {
               Message msg = msg =new MimeMessage(sess);
   try {
             msg.setFrom(new InternetAddress(myaccount));
@@ -67,7 +67,7 @@ public class JavaMailUtil {
            
             Multipart attach=new MimeMultipart();
             MimeBodyPart text= new MimeBodyPart();
-            text.setText("Merci d'éffectuer vos achats sur notre plateforme Artraction. \n Vous trouverez ci-joint votra facture.");
+            text.setText("Merci "+username+" d'éffectuer vos achats sur notre plateforme Artraction. \n Vous trouverez ci-joint votra facture.");
             attach.addBodyPart(text);
 
              
@@ -76,7 +76,7 @@ public class JavaMailUtil {
            pdf.attachFile(file);
           attach.addBodyPart(pdf);
             msg.setContent(attach);
-           //Transport.send(msg);
+         Transport.send(msg);
            
         } catch (Exception ex) {
             Logger.getLogger(JavaMailUtil.class.getName()).log(Level.SEVERE, null, ex);
