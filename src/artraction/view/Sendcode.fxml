@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.SendcodeController">
+   <children>
+      <Label layoutX="79.0" layoutY="203.0" text="Entrer Your Email" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="90.0" layoutY="414.0" text="Entrer Code" textFill="WHITE">
+         <font>
+            <Font size="19.0" />
+         </font></Label>
+      <Button fx:id="envoyer" layoutX="735.0" layoutY="282.0" mnemonicParsing="false" onAction="#envoyer" prefHeight="36.0" prefWidth="170.0" style="-fx-background-color: noir;" text="Envoyer" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="verifier" layoutX="725.0" layoutY="541.0" mnemonicParsing="false" onAction="#verifier" prefHeight="25.0" prefWidth="170.0" style="-fx-background-color: noir;" text="Verifier" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextField fx:id="txtEmail" layoutX="372.0" layoutY="203.0" prefHeight="25.0" prefWidth="178.0" />
+      <TextField fx:id="txtVer" layoutX="372.0" layoutY="415.0" prefHeight="25.0" prefWidth="178.0" />
+      <Label layoutX="262.0" layoutY="24.0" text="Reset Password" textFill="WHITE">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.CompteController">
+<AnchorPane fx:id="go" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.controller.CompteController">
    <children>
       <AnchorPane fx:id="rootpane" layoutY="6.0" prefHeight="543.0" prefWidth="228.0" style="-fx-background-color: #28252e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +32,7 @@
             <TableColumn fx:id="coltype" prefWidth="115.0" text="Role" />
         </columns>
       </TableView>
-      <TextField fx:id="filterField" layoutX="350.0" layoutY="30.0" promptText="Search" />
+      <TextField fx:id="filterField" layoutX="350.0" layoutY="30.0" onInputMethodTextChanged="#searchTextChanged" onKeyReleased="#searchKeyRelaesed" promptText="Search" />
       <Button fx:id="afficheruser" layoutX="889.0" layoutY="43.0" mnemonicParsing="false" onAction="#afficheruser" text="Afficher user" />
    </children>
 </AnchorPane>
