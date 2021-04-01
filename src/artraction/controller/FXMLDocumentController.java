@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package artraction.controller;
-import artraction.dao.User;
+import artraction.service.User;
 import artraction.entity.userEntity;
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +34,11 @@ import javafx.util.Duration;
 import javax.swing.JOptionPane;
 import org.controlsfx.control.Notifications;
 import artraction.utils.ConnexionSingleton;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+import javafx.scene.input.MouseEvent;
+import static oracle.net.aso.C00.u;
 
 /**
  * FXML Controller class
@@ -41,6 +46,8 @@ import artraction.utils.ConnexionSingleton;
  * @author MSI
  */
 public class FXMLDocumentController implements Initializable {
+public static final String ACCOUNT_SID = "ACaa141c929bfd92eb1c6f28ffead9cc91";
+    public static final String AUTH_TOKEN = "6313fc7e7688412e74fd1b3eab89357d";
 
     @FXML
     private AnchorPane pane_login;
@@ -48,8 +55,7 @@ public class FXMLDocumentController implements Initializable {
     private TextField tfusername;
     @FXML
     private TextField tfpassword;
-    @FXML
-    private ComboBox role;
+    //private ComboBox role;
     @FXML
     private Button btn_login;
     @FXML
@@ -76,8 +82,13 @@ public class FXMLDocumentController implements Initializable {
     private String imagePath = "";
     @FXML
     private ComboBox role1;
+   User su;
+  public User userInfos;
     @FXML
-    private Button btn;
+    private Button forget;
+    @FXML
+    private AnchorPane rootpane;
+
     /**
      * Initializes the controller class.
      */
@@ -85,15 +96,15 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         role1.getItems().addAll("Choose Role","Admin","Artiste","Client");
-        role.getItems().addAll("Choose Role","Admin","Artiste","Client");
-        role.getSelectionModel().select(0);
+       /* role.getItems().addAll("Choose Role","Admin","Artiste","Client");
+        role.getSelectionModel().select(0);*/
     }    
 
     @FXML
     private void LoginpaneShow(ActionEvent event) {
         pane_signup.setVisible(false);
         pane_login.setVisible(true);
-        role.getSelectionModel().select(0);
+        //role.getSelectionModel().select(0);
     }
 
     @FXML
@@ -105,11 +116,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void Login(ActionEvent event) throws Exception {
-        if(!role.getValue().toString().equals("Choose Role") && !tfemail1.getText().equals("")
-				&& !tfpassword1.getText().equals(""))
+        if(!tfemail1.getText().equals("")&&
+                !tfpassword1.getText().equals(""))
         {
-            System.out.println(tfemail1.getText() + " " + tfpassword1.getText() + " " + role.getValue().toString());
-            userEntity _u = User.getInstance().FindUser(tfemail1.getText(), tfpassword1.getText(), role.getValue().toString());
+            System.out.println(tfemail1.getText() + " " + tfpassword1.getText());
+            userEntity _u = User.getInstance().FindUser(tfemail1.getText(), tfpassword1.getText());
             if(_u != null)
             {
                 ConnexionSingleton.getInstance().uInfos = _u;
@@ -146,15 +157,27 @@ public class FXMLDocumentController implements Initializable {
             n.show();     
         }
     }
-
+public static boolean isNumeric(String strNum) {
+            if (strNum == null) {
+                return false;
+            }
+            try {
+                double d = Double.parseDouble(strNum);
+            } catch (NumberFormatException nfe) {
+                return false;
+            }
+            return true;
+        }
     @FXML
     private void add_users(ActionEvent event) throws Exception {
         		User sU = User.getInstance();
 		
 		String email = tfemail.getText();
+                		String numero = tfnumero.getText();
+
 		
 		if (!role1.getValue().toString().equals("Choose Role") && !tfusername.getText().equals("") && !tfemail.getText().equals("")
-				&& !tfpassword.getText().equals("") && !tfnumero.getText().equals("") 
+				&& !tfpassword.getText().equals("")  && !tfnumero.getText().equals("") 
 				&& !tfage.getText().equals("")&& !tfaddresse.getText().equals("")) {
           
            if(!email.contains("@gmail.") && !email.contains("@esprit.")) {
@@ -167,32 +190,23 @@ public class FXMLDocumentController implements Initializable {
                n.show();
 		   }
            
-		   else {
-			   User.getInstance().AddUser(tfusername.getText(), tfemail.getText(), tfpassword.getText(), Integer.parseInt(tfnumero.getText()), Integer.parseInt(tfage.getText()), tfaddresse.getText(), role1.getValue().toString(), imagePath);
-
-                          
-			   FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/esprit/view/Confirm.fxml"));              
+		  else {
+               User.getInstance().AddUser(tfusername.getText(), tfemail.getText(), tfpassword.getText(), Integer.parseInt(tfnumero.getText()), Integer.parseInt(tfage.getText()), tfaddresse.getText(), role1.getValue().toString(), imagePath);
+                             //String num = Integer.toString(u));
+                             // sms("your profil are Conected", "+216"+num);                         
+			  sU.User = u;
+			   int code = sU.sendConfirmation(email);
+			   FXMLLoader loader = new FXMLLoader(getClass().getResource("/artraction/view/acceil.fxml"));              
 				Parent parent = loader.load();
 				pane_signup.getChildren().setAll(parent);
 
+				 ConfirmController controller = (ConfirmController) loader.getController();
+				controller.setSetAll(u, code);
+
 				
-				
-		/*sU.ajouter(new User(ucName.getText(),ucLast.getText(),
-				ucPhone.getText(), ucEmail.getText(), ucPasswoed.getText(), 
-				ucRole, ucGender.getValue()
-				));
-                            Notifications n = Notifications.create()
-                              .title("SUCCESS")
-                              .text("  Sign up: Success ")
-                              .position(Pos.TOP_CENTER)
-                              .hideAfter(Duration.seconds(1));
-               n.darkStyle();
-               n.show();
-			   ucPasswoed.setText("");*/
+	
 		   }
           
-		/*	   AnchorPane pane = FXMLLoader.load(getClass().getResource("/com/esprit/view/User.fxml"));
-        ap.getChildren().setAll(pane);*/
           
           
            
@@ -223,7 +237,16 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void bnt(ActionEvent event) {
+    private void ForgotAction(MouseEvent event) throws IOException {
+ AnchorPane pane = FXMLLoader.load(getClass().getResource("/artraction/view/Sendcode.fxml"));
+       rootpane.getChildren().setAll(pane);       
     }
-    
+
+    public static void sms(String msg, String phoneNumber) {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Message message = Message.creator(new PhoneNumber(phoneNumber),
+                new PhoneNumber("+17743571480"),
+                msg).create();
+        System.out.println(message.getSid());
+    }
 }

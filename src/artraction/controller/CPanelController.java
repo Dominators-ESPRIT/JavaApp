@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package artraction.controller;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,6 +29,10 @@ public class CPanelController implements Initializable {
     private Button logout;
      @FXML
     private AnchorPane rootpane;
+    @FXML
+    private Button event;
+    @FXML
+    private Button btncompte;
 
     /**
      * Initializes the controller class.
@@ -52,6 +58,15 @@ public class CPanelController implements Initializable {
     private void oncliquelogout(MouseEvent event) throws Exception{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
        rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void event(ActionEvent event) throws IOException {
+       Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/listeEvenement.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
     
     

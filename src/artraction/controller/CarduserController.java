@@ -5,7 +5,7 @@
  */
 package artraction.controller;
 import artraction.controller.*;
-import artraction.dao.User;
+import artraction.service.User;
 import artraction.entity.userEntity;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,14 +17,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -52,13 +56,11 @@ public class CarduserController implements Initializable {
     @FXML
     private Label tfrole;
     @FXML
-    private Button modifier;
-    @FXML
-    private Button suprimer;
-    @FXML
     private VBox lv;
     @FXML
     private VBox rootpane;
+    @FXML
+    private Button btnmail;
 
     /**
      * Initializes the controller class.
@@ -81,55 +83,15 @@ tfage.setText(String.valueOf(user.getAge()));
 
     }
 
+
     @FXML
-    private void cliquemodifier(ActionEvent event) throws IOException {
-		userEntity u = null;
-		//u = lv.getSelectionModel().getSelectedItem();
-		
-		if(u != null) {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/UserUpdate.fxml"));
-                        
-                        //  Node userField = (Node)inside.getChildren().get(11);
-                        rootpane.getChildren().setAll(pane);
-                        AnchorPane inside = (AnchorPane) rootpane.getChildren().get(0);
-                        TextField userField = (TextField) inside.getChildren().get(6);
-                        userField.setText(u.getUsername());
-                        TextField emailField = (TextField) inside.getChildren().get(9); 
-                        emailField.setText(u.getEmail());
-                        TextField passField = (TextField) inside.getChildren().get(12); 
-                        passField.setText(u.getPassword());
-                        TextField numeroField = (TextField) inside.getChildren().get(15); 
-                        numeroField.setText(u.getNumero()+"");
-                        TextField ageField = (TextField) inside.getChildren().get(18); 
-                        ageField.setText(u.getAge()+"");
-                        System.out.println(u.getAdresse());
-                        TextField adresseField = (TextField) inside.getChildren().get(21); 
-                        adresseField.setText(u.getAdresse());
-                        ComboBox cb = (ComboBox) inside.getChildren().get(24);
-                        cb.setValue(u.getRole());
-                        Label hiddenT = (Label) inside.getChildren().get(27);
-                        hiddenT.setText(u.getEmail());
-		}
-    }
-public void loadData() throws Exception {
-		//lv.getItems().setAll(User.getInstance().afficher());
-	}
-    @FXML
-    void suprimerClicked(MouseEvent event) throws Exception {
-		userEntity u = null;
-		//u = lv.getSelection().getSelectedItem();
-		
-		if(u != null) {
-			User.getInstance().supprimer(u);
-			Notifications n = Notifications.create()
-                              .title("SUCCESS")
-                              .text("  User suprrimer")
-                              .position(Pos.TOP_CENTER)
-                              .hideAfter(Duration.seconds(1));
-               n.darkStyle();
-               n.show();
-			   loadData();
-		}
+    private void envoyeremail(ActionEvent event) throws IOException {
+     Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXML.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
+
     }
     
      }

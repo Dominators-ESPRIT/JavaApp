@@ -2,7 +2,6 @@ package artraction.controller;
 
 import artraction.controller.*;
 import artraction.utils.ConnexionSingleton;
-import artraction.utils.mysqlconnect;
 import artraction.entity.userEntity;
 import java.net.URL;
 import java.sql.Connection;
@@ -14,6 +13,8 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -77,10 +78,10 @@ public class ProfilmembreController implements Initializable {
     private TableColumn<userEntity, String> colpassword;
 
     @FXML
-    private TableColumn<userEntity, String> colnumero;
+    private TableColumn<userEntity, Integer> colnumero;
 
     @FXML
-    private TableColumn<userEntity, String> colage;
+    private TableColumn<userEntity, Integer> colage;
 
     @FXML
     private TableColumn<userEntity, String> coladresse;
@@ -117,10 +118,11 @@ public class ProfilmembreController implements Initializable {
     tfusername.setText(colusername.getCellData(index).toString());
     tfemail.setText(colemail.getCellData(index).toString());
     tfpassword.setText(colpassword.getCellData(index).toString());
-    tfnumero.setText(colnumero.getCellData(index).toString());
-    tfage.setText(colage.getCellData(index).toString());
+    
     tfadresse.setText(coladresse.getCellData(index).toString());
     tftype.setText(coltype.getCellData(index).toString());
+    tfnumero.setText(colnumero.getCellData(index) + "");
+    tfage.setText(colage.getCellData(index) + "");
     
     
     }
@@ -128,7 +130,7 @@ public class ProfilmembreController implements Initializable {
     @FXML
     public void Edit (){   
         try {
-            conn = mysqlconnect.ConnectDb();
+            conn = ConnexionSingleton.getInstance().getCnx();
            
             String value1 = tfusername.getText();
             String value2 = tfemail.getText();
@@ -153,8 +155,8 @@ public class ProfilmembreController implements Initializable {
     }
     
     @FXML
-    public void Delete(){
-    conn = mysqlconnect.ConnectDb();
+    public void Delete() throws Exception{
+    conn = ConnexionSingleton.getInstance().getCnx();
     String sql = "delete from users where username = ?";
         try {
             pst = conn.prepareStatement(sql);
@@ -170,17 +172,17 @@ public class ProfilmembreController implements Initializable {
     }
 
     
-    public void UpdateTable(){
+    public void UpdateTable() throws Exception{
         
          colusername.setCellValueFactory(new PropertyValueFactory<userEntity, String>("username"));
         colemail.setCellValueFactory(new PropertyValueFactory<userEntity, String>("email"));
         colpassword.setCellValueFactory(new PropertyValueFactory<userEntity, String>("password"));
-        colnumero.setCellValueFactory(new PropertyValueFactory<userEntity, String>("numero"));
-          colage.setCellValueFactory(new PropertyValueFactory<userEntity, String>("age"));
+        colnumero.setCellValueFactory(new PropertyValueFactory<userEntity, Integer>("numero"));
+          colage.setCellValueFactory(new PropertyValueFactory<userEntity, Integer>("age"));
         coladresse.setCellValueFactory(new PropertyValueFactory<userEntity, String>("adresse"));
         coltype.setCellValueFactory(new PropertyValueFactory<userEntity, String>("role"));
 
-        listM = mysqlconnect.getDatausers();
+        listM = ConnexionSingleton.getInstance().getDatauserById(ConnexionSingleton.getInstance().uInfos.getId());
         table_users.setItems(listM);
     }
     
@@ -193,9 +195,13 @@ public class ProfilmembreController implements Initializable {
        
         
     
-    UpdateTable();
-   
-    // Code Source in description
+       try {
+           UpdateTable();
+           
+           // Code Source in description
+       } catch (Exception ex) {
+           Logger.getLogger(ProfilmembreController.class.getName()).log(Level.SEVERE, null, ex);
+       }
     } 
 
     private Connection getConnection() {

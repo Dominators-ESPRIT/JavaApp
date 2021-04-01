@@ -29,38 +29,56 @@ public class AcceilController {
 
     @FXML
     void oncliqueecompetition(MouseEvent event) throws Exception{
-        AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("/view/FXMLDocument.fxml"));
-       rootpane.getChildren().setAll( pane);
+       Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
     
 
     @FXML
     void oncliqueenchere(MouseEvent event) throws Exception{
-        AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("/view/FXMLDocument.fxml"));
-       rootpane.getChildren().setAll( pane);
+     Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
 
     @FXML
     void oncliqueevenement(MouseEvent event) throws Exception{
-       AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("/view/FXMLDocument.fxml"));
-       rootpane.getChildren().setAll( pane);
+       Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
 
     @FXML
     void oncliqueformation(MouseEvent event) throws Exception{
-       AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("/view/FXMLDocument.fxml"));
-       rootpane.getChildren().setAll( pane);
+        Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
 
     @FXML
     void oncliquelogin(MouseEvent event) throws Exception{
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("/view/FXMLDocument.fxml"));
-       rootpane.getChildren().setAll( pane);
+        Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
 
     @FXML
     void oncliqueproduit(MouseEvent event) throws Exception{
-        AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource("/view/FXMLDocument.fxml"));
-       rootpane.getChildren().setAll( pane);
+        Parent root = FXMLLoader.load(getClass().getResource("/artraction/view/FXMLDocument.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
     }
 }
