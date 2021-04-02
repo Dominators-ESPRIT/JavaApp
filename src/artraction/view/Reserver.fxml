@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="artraction.view.ReserverController">
+   <children>
+      <ComboBox id="stade" fx:id="com1" layoutX="106.0" layoutY="174.0" onAction="#SelectStade" prefHeight="26.0" prefWidth="174.0" style="-fx-background-color: #7785ac;">
+         <cursor>
+          
+         </cursor></ComboBox>
+      <ComboBox fx:id="com2" layoutX="126.0" layoutY="250.0" onAction="#SelectHeure" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: #7785ac;" />
+      <Label layoutX="23.0" layoutY="178.0" text="Fomation" textFill="WHITE" />
+      <Label layoutX="22.0" layoutY="255.0" text="Heure" textFill="WHITE" />
+      <Button fx:id="btnr" layoutX="66.0" layoutY="498.0" mnemonicParsing="false" onAction="#Reserver" prefHeight="39.0" prefWidth="214.0" style="-fx-background-color: gray;" text="Réserver" textFill="WHITE" />
+      <TableView fx:id="table_reservation" layoutX="42.0" layoutY="466.0" onMouseClicked="#getSelected" prefHeight="130.0" prefWidth="278.0" visible="false">
+        <columns>
+          <TableColumn fx:id="col_r" prefWidth="89.59997177124023" text="ID reservation" visible="false" />
+          <TableColumn fx:id="col_h" prefWidth="84.79998779296875" text="Heure" />
+            <TableColumn fx:id="col_id" prefWidth="130.40003967285156" text="ID Stade" visible="false" />
+            <TableColumn fx:id="col_nom" prefWidth="72.00006103515625" text="Nom stade" />
+            <TableColumn fx:id="col_date" prefWidth="117.59996032714844" text="Date" />
+        </columns>
+      </TableView>
+      <Button fx:id="btns" layoutX="23.0" layoutY="640.0" mnemonicParsing="false" onAction="#SupprimerReservation" style="-fx-background-color: red;" text="Supprimer Participation" textFill="WHITE" visible="false" />
+      <Button layoutX="194.0" layoutY="640.0" mnemonicParsing="false" onAction="#Edit" style="-fx-background-color: orange;" text="Modifier Participation" textFill="WHITE" visible="false" />
+      <TextField fx:id="ftid" disable="true" layoutX="107.0" layoutY="89.0" visible="false" />
+      <TableView fx:id="table_stade" layoutX="395.0" layoutY="178.0" onMouseClicked="#getadressclicked" prefHeight="339.0" prefWidth="535.0">
+        <columns>
+          <TableColumn fx:id="tid" prefWidth="32.0" text="ID_STADE" visible="false" />
+          <TableColumn fx:id="tnom" prefWidth="107.20001220703125" text="Nom" />
+            <TableColumn fx:id="tadresse" prefWidth="137.60003662109375" text="Adresse" />
+            <TableColumn fx:id="tcontact" prefWidth="115.20001220703125" text="Contact" />
+            <TableColumn fx:id="timage" prefWidth="86.4000244140625" text="Proprietaire" />
+            <TableColumn fx:id="tprixph" prefWidth="81.5999755859375" text="Prix" />
+        </columns>
+      </TableView>
+      <TextField fx:id="mapadress" disable="true" layoutX="564.0" layoutY="532.0" visible="false" />
+      <Button layoutX="554.0" layoutY="595.0" mnemonicParsing="false" onAction="#SeeLocation" prefHeight="39.0" prefWidth="167.0" style="-fx-background-color: gray;" text="Check Location" textFill="WHITE" />
+      <TextField fx:id="ftR" layoutX="554.0" layoutY="101.0" prefHeight="26.0" prefWidth="179.0" />
+      <Button layoutX="775.0" layoutY="101.0" mnemonicParsing="false" onAction="#SearchFormation" prefHeight="26.0" prefWidth="134.0" style="-fx-background-color: #7785ac;" text="Rechercher" textFill="WHITE" />
+      <Label layoutX="38.0" layoutY="56.0" text="Participer à une Formation" textFill="#785a97">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <ImageView layoutX="227.0" layoutY="408.0">
+         <image>
+            <Image url="@../Images/ticket-16.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="882.0" layoutY="106.0">
+         <image>
+            <Image url="@../Images/search-3-16.png" />
+         </image>
+      </ImageView>
+      <ImageView layoutX="705.0" layoutY="607.0">
+         <image>
+            <Image url="@../Images/marker-16.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="43.0" layoutY="601.0" mnemonicParsing="false" onAction="#BPDF" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: #A52A2A;" text="Imprimer  les participations" textFill="WHITE" visible="false" />
+      <DatePicker fx:id="dater" layoutX="165.0" layoutY="335.0" />
+      <Label layoutX="22.0" layoutY="339.0" text="Date de Participation" textFill="WHITE" />
+      <Label fx:id="rand" layoutX="616.0" layoutY="536.0" prefHeight="18.0" prefWidth="67.0" />
+   </children>
+</AnchorPane>
